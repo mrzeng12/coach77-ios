@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B2C50CF823E761CB00B46831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50CF723E761CB00B46831 /* AppDelegate.swift */; };
+		B2C50CFA23E761CB00B46831 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50CF923E761CB00B46831 /* SceneDelegate.swift */; };
+		B2C50CFC23E761CB00B46831 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50CFB23E761CB00B46831 /* ContentView.swift */; };
+		B2C50CFE23E761D000B46831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2C50CFD23E761D000B46831 /* Assets.xcassets */; };
+		B2C50D0123E761D000B46831 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2C50D0023E761D000B46831 /* Preview Assets.xcassets */; };
+		B2C50D0423E761D000B46831 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2C50D0223E761D000B46831 /* LaunchScreen.storyboard */; };
+		B2C50D0F23E761D000B46831 /* TicMasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50D0E23E761D000B46831 /* TicMasterTests.swift */; };
+		B2C50D1A23E761D000B46831 /* TicMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50D1923E761D000B46831 /* TicMasterUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B2C50D0B23E761D000B46831 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2C50CEC23E761CB00B46831 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2C50CF323E761CB00B46831;
+			remoteInfo = TicMaster;
+		};
+		B2C50D1623E761D000B46831 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2C50CEC23E761CB00B46831 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2C50CF323E761CB00B46831;
+			remoteInfo = TicMaster;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B2C50CF423E761CB00B46831 /* TicMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2C50CF723E761CB00B46831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B2C50CF923E761CB00B46831 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B2C50CFB23E761CB00B46831 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B2C50CFD23E761D000B46831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B2C50D0023E761D000B46831 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B2C50D0323E761D000B46831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B2C50D0523E761D000B46831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2C50D0A23E761D000B46831 /* TicMasterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicMasterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2C50D0E23E761D000B46831 /* TicMasterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicMasterTests.swift; sourceTree = "<group>"; };
+		B2C50D1023E761D000B46831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2C50D1523E761D000B46831 /* TicMasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicMasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2C50D1923E761D000B46831 /* TicMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicMasterUITests.swift; sourceTree = "<group>"; };
+		B2C50D1B23E761D000B46831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B2C50CF123E761CB00B46831 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2C50D0723E761D000B46831 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2C50D1223E761D000B46831 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B2C50CEB23E761CB00B46831 = {
+			isa = PBXGroup;
+			children = (
+				B2C50CF623E761CB00B46831 /* TicMaster */,
+				B2C50D0D23E761D000B46831 /* TicMasterTests */,
+				B2C50D1823E761D000B46831 /* TicMasterUITests */,
+				B2C50CF523E761CB00B46831 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B2C50CF523E761CB00B46831 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2C50CF423E761CB00B46831 /* TicMaster.app */,
+				B2C50D0A23E761D000B46831 /* TicMasterTests.xctest */,
+				B2C50D1523E761D000B46831 /* TicMasterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2C50CF623E761CB00B46831 /* TicMaster */ = {
+			isa = PBXGroup;
+			children = (
+				B2C50CF723E761CB00B46831 /* AppDelegate.swift */,
+				B2C50CF923E761CB00B46831 /* SceneDelegate.swift */,
+				B2C50CFB23E761CB00B46831 /* ContentView.swift */,
+				B2C50CFD23E761D000B46831 /* Assets.xcassets */,
+				B2C50D0223E761D000B46831 /* LaunchScreen.storyboard */,
+				B2C50D0523E761D000B46831 /* Info.plist */,
+				B2C50CFF23E761D000B46831 /* Preview Content */,
+			);
+			path = TicMaster;
+			sourceTree = "<group>";
+		};
+		B2C50CFF23E761D000B46831 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B2C50D0023E761D000B46831 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B2C50D0D23E761D000B46831 /* TicMasterTests */ = {
+			isa = PBXGroup;
+			children = (
+				B2C50D0E23E761D000B46831 /* TicMasterTests.swift */,
+				B2C50D1023E761D000B46831 /* Info.plist */,
+			);
+			path = TicMasterTests;
+			sourceTree = "<group>";
+		};
+		B2C50D1823E761D000B46831 /* TicMasterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B2C50D1923E761D000B46831 /* TicMasterUITests.swift */,
+				B2C50D1B23E761D000B46831 /* Info.plist */,
+			);
+			path = TicMasterUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B2C50CF323E761CB00B46831 /* TicMaster */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2C50D1E23E761D000B46831 /* Build configuration list for PBXNativeTarget "TicMaster" */;
+			buildPhases = (
+				B2C50CF023E761CB00B46831 /* Sources */,
+				B2C50CF123E761CB00B46831 /* Frameworks */,
+				B2C50CF223E761CB00B46831 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TicMaster;
+			productName = TicMaster;
+			productReference = B2C50CF423E761CB00B46831 /* TicMaster.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B2C50D0923E761D000B46831 /* TicMasterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2C50D2123E761D000B46831 /* Build configuration list for PBXNativeTarget "TicMasterTests" */;
+			buildPhases = (
+				B2C50D0623E761D000B46831 /* Sources */,
+				B2C50D0723E761D000B46831 /* Frameworks */,
+				B2C50D0823E761D000B46831 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2C50D0C23E761D000B46831 /* PBXTargetDependency */,
+			);
+			name = TicMasterTests;
+			productName = TicMasterTests;
+			productReference = B2C50D0A23E761D000B46831 /* TicMasterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B2C50D1423E761D000B46831 /* TicMasterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2C50D2423E761D000B46831 /* Build configuration list for PBXNativeTarget "TicMasterUITests" */;
+			buildPhases = (
+				B2C50D1123E761D000B46831 /* Sources */,
+				B2C50D1223E761D000B46831 /* Frameworks */,
+				B2C50D1323E761D000B46831 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2C50D1723E761D000B46831 /* PBXTargetDependency */,
+			);
+			name = TicMasterUITests;
+			productName = TicMasterUITests;
+			productReference = B2C50D1523E761D000B46831 /* TicMasterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B2C50CEC23E761CB00B46831 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = livingston;
+				TargetAttributes = {
+					B2C50CF323E761CB00B46831 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					B2C50D0923E761D000B46831 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = B2C50CF323E761CB00B46831;
+					};
+					B2C50D1423E761D000B46831 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = B2C50CF323E761CB00B46831;
+					};
+				};
+			};
+			buildConfigurationList = B2C50CEF23E761CB00B46831 /* Build configuration list for PBXProject "TicMaster" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B2C50CEB23E761CB00B46831;
+			productRefGroup = B2C50CF523E761CB00B46831 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B2C50CF323E761CB00B46831 /* TicMaster */,
+				B2C50D0923E761D000B46831 /* TicMasterTests */,
+				B2C50D1423E761D000B46831 /* TicMasterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B2C50CF223E761CB00B46831 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2C50D0423E761D000B46831 /* LaunchScreen.storyboard in Resources */,
+				B2C50D0123E761D000B46831 /* Preview Assets.xcassets in Resources */,
+				B2C50CFE23E761D000B46831 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2C50D0823E761D000B46831 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2C50D1323E761D000B46831 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2C50CF023E761CB00B46831 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2C50CF823E761CB00B46831 /* AppDelegate.swift in Sources */,
+				B2C50CFA23E761CB00B46831 /* SceneDelegate.swift in Sources */,
+				B2C50CFC23E761CB00B46831 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2C50D0623E761D000B46831 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2C50D0F23E761D000B46831 /* TicMasterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2C50D1123E761D000B46831 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2C50D1A23E761D000B46831 /* TicMasterUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B2C50D0C23E761D000B46831 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2C50CF323E761CB00B46831 /* TicMaster */;
+			targetProxy = B2C50D0B23E761D000B46831 /* PBXContainerItemProxy */;
+		};
+		B2C50D1723E761D000B46831 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2C50CF323E761CB00B46831 /* TicMaster */;
+			targetProxy = B2C50D1623E761D000B46831 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B2C50D0223E761D000B46831 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B2C50D0323E761D000B46831 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B2C50D1C23E761D000B46831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B2C50D1D23E761D000B46831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B2C50D1F23E761D000B46831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"TicMaster/Preview Content\"";
+				DEVELOPMENT_TEAM = CW9WR9YTYG;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TicMaster/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.livingston.TicMaster;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B2C50D2023E761D000B46831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"TicMaster/Preview Content\"";
+				DEVELOPMENT_TEAM = CW9WR9YTYG;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TicMaster/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.livingston.TicMaster;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B2C50D2223E761D000B46831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW9WR9YTYG;
+				INFOPLIST_FILE = TicMasterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.livingston.TicMasterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TicMaster.app/TicMaster";
+			};
+			name = Debug;
+		};
+		B2C50D2323E761D000B46831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW9WR9YTYG;
+				INFOPLIST_FILE = TicMasterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.livingston.TicMasterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TicMaster.app/TicMaster";
+			};
+			name = Release;
+		};
+		B2C50D2523E761D000B46831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW9WR9YTYG;
+				INFOPLIST_FILE = TicMasterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.livingston.TicMasterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TicMaster;
+			};
+			name = Debug;
+		};
+		B2C50D2623E761D000B46831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CW9WR9YTYG;
+				INFOPLIST_FILE = TicMasterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.livingston.TicMasterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TicMaster;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B2C50CEF23E761CB00B46831 /* Build configuration list for PBXProject "TicMaster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2C50D1C23E761D000B46831 /* Debug */,
+				B2C50D1D23E761D000B46831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2C50D1E23E761D000B46831 /* Build configuration list for PBXNativeTarget "TicMaster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2C50D1F23E761D000B46831 /* Debug */,
+				B2C50D2023E761D000B46831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2C50D2123E761D000B46831 /* Build configuration list for PBXNativeTarget "TicMasterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2C50D2223E761D000B46831 /* Debug */,
+				B2C50D2323E761D000B46831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2C50D2423E761D000B46831 /* Build configuration list for PBXNativeTarget "TicMasterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2C50D2523E761D000B46831 /* Debug */,
+				B2C50D2623E761D000B46831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B2C50CEC23E761CB00B46831 /* Project object */;
+}
