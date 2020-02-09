@@ -10,7 +10,70 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        ZStack
+        {
+            Color.white
+
+
+        VStack(alignment: .leading) {
+            HStack {                Text("Livingston").font(.headline).foregroundColor(Color.black)
+                Spacer()
+            }
+            HStack {
+                Button(action: {
+                  print("button pressed")
+
+                }) {
+                    Image("ticket")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                    
+                Spacer()
+                Button(action: {
+                  print("button pressed")
+
+                }) {
+                    Image("add")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                    
+            }
+            HStack{
+                Text("Arena").font(.headline).foregroundColor(Color.black)
+                Spacer()
+            }
+            HStack {
+                Button(action: {
+                  print("button pressed")
+
+                }) {
+                    Image("ticket")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                    
+                Spacer()
+                Button(action: {
+                  print("button pressed")
+
+                }) {
+                    Image("no-ticket")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                    
+            }
+            Spacer()
+            }.padding()
+            
+        
+        }
     }
 }
 
