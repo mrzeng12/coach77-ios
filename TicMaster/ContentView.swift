@@ -21,7 +21,7 @@ struct ContentView: View {
             }
             HStack {
                 Button(action: {
-                  print("button pressed")
+                    self.touchAction("A")
 
                 }) {
                     Image("ticket")
@@ -32,7 +32,7 @@ struct ContentView: View {
                     
                 Spacer()
                 Button(action: {
-                  print("button pressed")
+                  self.touchAction("B")
 
                 }) {
                     Image("add")
@@ -48,7 +48,7 @@ struct ContentView: View {
             }
             HStack {
                 Button(action: {
-                  print("button pressed")
+                  self.touchAction("C")
 
                 }) {
                     Image("ticket")
@@ -59,7 +59,7 @@ struct ContentView: View {
                     
                 Spacer()
                 Button(action: {
-                  print("button pressed")
+                  self.touchAction("D")
 
                 }) {
                     Image("no-ticket")
@@ -75,7 +75,12 @@ struct ContentView: View {
         
         }
     }
+    private func touchAction(_ btn: String) {
+      print(btn)
+    }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
