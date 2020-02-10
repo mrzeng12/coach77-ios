@@ -11,7 +11,12 @@ import SwiftUI
 struct ContentView: View {
     
     @State var imageA: Image? = Image("ticket")
+    @State var imageB: Image? = Image("ticket")
+    @State var imageC: Image? = Image("ticket")
+    @State var imageD: Image? = Image("ticket")
     @State var showCaptureImageView: Bool = false
+    
+    @State var picked: String? = ""
     
     var body: some View {
         ZStack
@@ -37,7 +42,7 @@ struct ContentView: View {
                             self.touchAction("B")
                             
                         }) {
-                            Image("add")
+                            imageB?
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -53,7 +58,7 @@ struct ContentView: View {
                             self.touchAction("C")
                             
                         }) {
-                            Image("ticket")
+                            imageC?
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -64,7 +69,7 @@ struct ContentView: View {
                             self.touchAction("D")
                             
                         }) {
-                            Image("no-ticket")
+                            imageD?
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -73,15 +78,16 @@ struct ContentView: View {
                     }
                     Spacer()
                 }.padding()
-//                .sheet(isPresented: true, onDismiss: nil, content: ImagePicker(image: self.$image))
+                //                .sheet(isPresented: true, onDismiss: nil, content: ImagePicker(image: self.$image))
                 if (showCaptureImageView) {
-                  CaptureImageView(isShown: $showCaptureImageView, image: $imageA)
+                    CaptureImageView(isShown: $showCaptureImageView, imageA: $imageA, imageB: $imageB, imageC: $imageC, imageD: $imageD, picked: $picked)
                 }
         }
     }
     private func touchAction(_ btn: String) {
         print(btn)
         //        ImagePicker(image: self.$image)
+        self.picked = btn
         self.showCaptureImageView.toggle()
     }
 }
@@ -96,27 +102,33 @@ struct ContentView_Previews: PreviewProvider {
 
 
 struct CaptureImageView {
-  
-  /// MARK: - Properties
-  @Binding var isShown: Bool
-  @Binding var image: Image?
-  
-  func makeCoordinator() -> Coordinator {
-    return Coordinator(isShown: $isShown, image: $image)
-  }
+    
+    /// MARK: - Properties
+    @Binding var isShown: Bool
+    @Binding var imageA: Image?
+    @Binding var imageB: Image?
+    @Binding var imageC: Image?
+    @Binding var imageD: Image?
+    @Binding var picked: String?
+    
+    //    var result: Bool = false
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(isShown: $isShown, imageA: $imageA, imageB: $imageB, imageC: $imageC, imageD: $imageD, picked: $picked)
+    }
 }
 
 extension CaptureImageView: UIViewControllerRepresentable {
-  func makeUIViewController(context: UIViewControllerRepresentableContext<CaptureImageView>) -> UIImagePickerController {
-    let picker = UIImagePickerController()
-    picker.delegate = context.coordinator
-    /// Default is images gallery. Un-comment the next line of code if you would like to test camera
-//    picker.sourceType = .camera
-    return picker
-  }
-  
-  func updateUIViewController(_ uiViewController: UIImagePickerController,
-                              context: UIViewControllerRepresentableContext<CaptureImageView>) {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<CaptureImageView>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        /// Default is images gallery. Un-comment the next line of code if you would like to test camera
+        //    picker.sourceType = .camera
+        return picker
+    }
     
-  }
+    func updateUIViewController(_ uiViewController: UIImagePickerController,
+                                context: UIViewControllerRepresentableContext<CaptureImageView>) {
+        
+    }
 }
