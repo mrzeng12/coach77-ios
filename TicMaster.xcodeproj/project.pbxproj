@@ -15,8 +15,7 @@
 		B2C50D0423E761D000B46831 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2C50D0223E761D000B46831 /* LaunchScreen.storyboard */; };
 		B2C50D0F23E761D000B46831 /* TicMasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50D0E23E761D000B46831 /* TicMasterTests.swift */; };
 		B2C50D1A23E761D000B46831 /* TicMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50D1923E761D000B46831 /* TicMasterUITests.swift */; };
-		B2C50D2823E77B0C00B46831 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50D2723E77B0C00B46831 /* CircleImage.swift */; };
-		B2C50D2A23E7841B00B46831 /* MapUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50D2923E7841B00B46831 /* MapUIView.swift */; };
+		B2C50D2E23F0DC1300B46831 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50D2D23F0DC1200B46831 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +50,7 @@
 		B2C50D1523E761D000B46831 /* TicMasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicMasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C50D1923E761D000B46831 /* TicMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicMasterUITests.swift; sourceTree = "<group>"; };
 		B2C50D1B23E761D000B46831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2C50D2723E77B0C00B46831 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
-		B2C50D2923E7841B00B46831 /* MapUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUIView.swift; sourceTree = "<group>"; };
+		B2C50D2D23F0DC1200B46831 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +108,7 @@
 				B2C50D0223E761D000B46831 /* LaunchScreen.storyboard */,
 				B2C50D0523E761D000B46831 /* Info.plist */,
 				B2C50CFF23E761D000B46831 /* Preview Content */,
-				B2C50D2723E77B0C00B46831 /* CircleImage.swift */,
-				B2C50D2923E7841B00B46831 /* MapUIView.swift */,
+				B2C50D2D23F0DC1200B46831 /* Coordinator.swift */,
 			);
 			path = TicMaster;
 			sourceTree = "<group>";
@@ -274,8 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C50CF823E761CB00B46831 /* AppDelegate.swift in Sources */,
-				B2C50D2823E77B0C00B46831 /* CircleImage.swift in Sources */,
-				B2C50D2A23E7841B00B46831 /* MapUIView.swift in Sources */,
+				B2C50D2E23F0DC1300B46831 /* Coordinator.swift in Sources */,
 				B2C50CFA23E761CB00B46831 /* SceneDelegate.swift in Sources */,
 				B2C50CFC23E761CB00B46831 /* ContentView.swift in Sources */,
 			);
