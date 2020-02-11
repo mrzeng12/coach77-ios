@@ -10,11 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var imageA: Image? = Image("ticket")
-    @State var imageB: Image? = Image("ticket")
-    @State var imageC: Image? = Image("ticket")
-    @State var imageD: Image? = Image("ticket")
     @State var showCaptureImageView: Bool = false
+    @State var inventory: [String:Int] = ["A":-1, "B":-1, "C":-1, "D":-1]
     
     @State var picked: String? = ""
     
@@ -31,7 +28,8 @@ struct ContentView: View {
                             self.touchAction("A")
                             
                         }) {
-                            imageA?
+                            Image(self.inventory["A"] == -1 ? "add":
+                                self.inventory["A"] == 0 ? "no-ticket" : "ticket")
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -42,7 +40,9 @@ struct ContentView: View {
                             self.touchAction("B")
                             
                         }) {
-                            imageB?
+                            Image(self.inventory["A"] == -1 ? "":
+                                self.inventory["B"] == -1 ? "add":
+                                self.inventory["B"] == 0 ? "no-ticket":"ticket")
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -58,7 +58,8 @@ struct ContentView: View {
                             self.touchAction("C")
                             
                         }) {
-                            imageC?
+                            Image(self.inventory["C"] == -1 ? "add":
+                                self.inventory["C"] == 0 ? "no-ticket" : "ticket")
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -69,7 +70,9 @@ struct ContentView: View {
                             self.touchAction("D")
                             
                         }) {
-                            imageD?
+                            Image(self.inventory["C"] == -1 ? "":
+                                self.inventory["D"] == -1 ? "add":
+                                self.inventory["D"] == 0 ? "no-ticket":"ticket")
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -78,9 +81,9 @@ struct ContentView: View {
                     }
                     Spacer()
                 }.padding()
-                //                .sheet(isPresented: true, onDismiss: nil, content: ImagePicker(image: self.$image))
+                
                 if (showCaptureImageView) {
-                    CaptureImageView(isShown: $showCaptureImageView, imageA: $imageA, imageB: $imageB, imageC: $imageC, imageD: $imageD, picked: $picked)
+                    CaptureImageView(isShown: $showCaptureImageView, picked: $picked, inventory: $inventory)
                 }
         }
     }
@@ -105,16 +108,12 @@ struct CaptureImageView {
     
     /// MARK: - Properties
     @Binding var isShown: Bool
-    @Binding var imageA: Image?
-    @Binding var imageB: Image?
-    @Binding var imageC: Image?
-    @Binding var imageD: Image?
     @Binding var picked: String?
-    
+    @Binding var inventory:[String:Int]
     //    var result: Bool = false
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(isShown: $isShown, imageA: $imageA, imageB: $imageB, imageC: $imageC, imageD: $imageD, picked: $picked)
+        return Coordinator(isShown: $isShown, picked: $picked, inventory: $inventory)
     }
 }
 

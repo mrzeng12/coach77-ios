@@ -11,46 +11,41 @@ import SwiftUI
 class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @Binding var isCoordinatorShown: Bool
-    //    @Binding
-    @Binding var imageA: Image?
-    @Binding var imageB: Image?
-    @Binding var imageC: Image?
-    @Binding var imageD: Image?
     @Binding var picked: String?
-    init(isShown: Binding<Bool>, imageA: Binding<Image?>,
-         imageB: Binding<Image?>, imageC: Binding<Image?>, imageD: Binding<Image?>, picked: Binding<String?>) {
-        //        init(isShown: Binding<Bool>) {
+    @Binding var inventory:[String:Int]
+    init(isShown: Binding<Bool>, picked: Binding<String?>, inventory: Binding<[String:Int]>) {
+        
         _isCoordinatorShown = isShown
-        //        _imageInCoordinator = image
-        _imageA = imageA
-        _imageB = imageB
-        _imageC = imageC
-        _imageD = imageD
         _picked = picked
+        _inventory = inventory
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        //        imageInCoordinator = Image(uiImage: unwrapImage)
+        
         switch picked {
         case "A":
-            imageA = Image(uiImage: unwrapImage)
+            //            imageA = Image(uiImage: unwrapImage)
+            inventory["A"] = 10
         case "B":
-            imageB = Image(uiImage: unwrapImage)
+            //            imageB = Image(uiImage: unwrapImage)
+            inventory["B"] = 10
         case "C":
-            imageC = Image(uiImage: unwrapImage)
+            //            imageC = Image(uiImage: unwrapImage)
+            inventory["C"] = 10
         case "D":
-            imageD = Image(uiImage: unwrapImage)
+            //            imageD = Image(uiImage: unwrapImage)
+            inventory["D"] = 10
         default:
             print("wrong")
         }
-        
         
         isCoordinatorShown = false
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
         isCoordinatorShown = false
     }
 }
