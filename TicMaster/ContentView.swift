@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var picked: String? = ""
     
     var body: some View {
+        NavigationView{
         ZStack
             {
                 Color.white
@@ -85,6 +86,8 @@ struct ContentView: View {
                 if (showCaptureImageView) {
                     CaptureImageView(isShown: $showCaptureImageView, picked: $picked, inventory: $inventory)
                 }
+        }//.navigationBarTitle("Coach")
+            
         }
     }
     private func touchAction(_ btn: String) {
