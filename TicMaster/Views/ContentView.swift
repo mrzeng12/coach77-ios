@@ -16,12 +16,7 @@ struct ContentView: View {
     @State var picked: Item
     @State private var action: Int? = 0
     
-    enum Item: String {
-        case A
-        case B
-        case C
-        case D
-    }
+    
     
     var body: some View {
         NavigationView{
@@ -143,43 +138,4 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
-struct CaptureImageView {
-    
-    /// MARK: - Properties
-    @Binding var isShown: Bool
-    @Binding var picked: ContentView.Item
-    @Binding var inventory:Tickets
-    
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(isShown: $isShown, picked: $picked, inventory: $inventory)
-    }
-}
-
-extension CaptureImageView: UIViewControllerRepresentable {
-    func makeUIViewController(context: UIViewControllerRepresentableContext<CaptureImageView>) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.delegate = context.coordinator
-        /// Default is images gallery. Un-comment the next line of code if you would like to test camera
-        //    picker.sourceType = .camera
-        return picker
-    }
-    
-    func updateUIViewController(_ uiViewController: UIImagePickerController,
-                                context: UIViewControllerRepresentableContext<CaptureImageView>) {
-        
-    }
-}
-
-struct Tickets {
-    var A: TicketDetail = TicketDetail()
-    var B: TicketDetail = TicketDetail()
-    var C: TicketDetail = TicketDetail()
-    var D: TicketDetail = TicketDetail()
-}
-
-struct TicketDetail {
-    var count: Int = -1
-    var image: String = ""
-}
 

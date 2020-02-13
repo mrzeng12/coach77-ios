@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @Binding var isCoordinatorShown: Bool
-    @Binding var picked: ContentView.Item
+    @Binding var picked: Item
     @Binding var inventory:Tickets
-    init(isShown: Binding<Bool>, picked: Binding<ContentView.Item>, inventory: Binding<Tickets>) {
+    init(isShown: Binding<Bool>, picked: Binding<Item>, inventory: Binding<Tickets>) {
         
         _isCoordinatorShown = isShown
         _picked = picked
@@ -25,18 +25,18 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
         guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
         switch picked {
-        case ContentView.Item.A:
+        case Item.A:
             
             let imageName = UUID().uuidString
             if(saveImage(image: unwrapImage, name: imageName)){
                 inventory.A.image = imageName
                 inventory.A.count = 10
             }
-        case ContentView.Item.B:
+        case Item.B:
             inventory.B.count = 10
-        case ContentView.Item.C:
+        case Item.C:
             inventory.C.count = 10
-        case ContentView.Item.D:
+        case Item.D:
             inventory.D.count = 10
         }
         

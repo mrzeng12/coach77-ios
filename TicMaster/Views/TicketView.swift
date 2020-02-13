@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TicketView: View {
-    let name: ContentView.Item
+    let name: Item
     let tickets: Tickets
     var body: some View {
         
@@ -30,6 +30,6 @@ struct TicketView: View {
 
 struct TicketView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketView(name: ContentView.Item.A, tickets: Tickets())
+        TicketView(name: Item.A, tickets: Tickets())
     }
 }
