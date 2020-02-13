@@ -23,22 +23,25 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        let imageName = UUID().uuidString
         
-        switch picked {
-        case Item.A:
-            
-            let imageName = UUID().uuidString
-            if(saveImage(image: unwrapImage, name: imageName)){
+        if(saveImage(image: unwrapImage, name: imageName)){
+            switch picked {
+            case Item.A:
                 inventory.A.image = imageName
                 inventory.A.count = 10
+            case Item.B:
+                inventory.B.image = imageName
+                inventory.B.count = 10
+            case Item.C:
+                inventory.C.image = imageName
+                inventory.C.count = 10
+            case Item.D:
+                inventory.D.image = imageName
+                inventory.D.count = 10
             }
-        case Item.B:
-            inventory.B.count = 10
-        case Item.C:
-            inventory.C.count = 10
-        case Item.D:
-            inventory.D.count = 10
         }
+        
         
         isCoordinatorShown = false
     }

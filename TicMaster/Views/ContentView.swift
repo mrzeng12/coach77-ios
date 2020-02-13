@@ -36,8 +36,7 @@ struct ContentView: View {
                             self.touchAction(.A)
                             
                         }) {
-                            Image(self.inventory.A.count == -1 ? "add":
-                                self.inventory.A.count == 0 ? "no-ticket" : "ticket")
+                            Image(getImage(num: inventory.A.count))
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -52,8 +51,7 @@ struct ContentView: View {
                             if(self.inventory.A.count == -1){
                                 Spacer()
                             }else {
-                                Image(self.inventory.B.count == -1 ? "add":
-                                    self.inventory.B.count == 0 ? "no-ticket":"ticket")
+                                Image(getImage(num: inventory.B.count))
                                     .renderingMode(.original)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -70,8 +68,7 @@ struct ContentView: View {
                             self.touchAction(.C)
                             
                         }) {
-                            Image(self.inventory.C.count == -1 ? "add":
-                                self.inventory.C.count == 0 ? "no-ticket" : "ticket")
+                            Image(getImage(num: inventory.C.count))
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -85,8 +82,7 @@ struct ContentView: View {
                             if(self.inventory.C.count == -1){
                                 Spacer()
                             }else {
-                                Image(self.inventory.D.count == -1 ? "add":
-                                    self.inventory.D.count == 0 ? "no-ticket":"ticket")
+                                Image(getImage(num: inventory.D.count))
                                     .renderingMode(.original)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -107,7 +103,7 @@ struct ContentView: View {
         }
     }
     private func touchAction(_ btn: Item) {
-//        print(btn)
+
         var detail:TicketDetail? = nil
         switch btn {
         case .A:
@@ -126,11 +122,18 @@ struct ContentView: View {
             self.showCaptureImageView.toggle()
         }
         
-        
+    }
+    
+    private func getImage(num: Int) -> String {
+        if num == -1 {
+            return "add"
+        } else if num == 0 {
+            return "no-ticket"
+        } else {
+            return "ticket"
+        }
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
