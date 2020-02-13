@@ -11,88 +11,90 @@ import SwiftUI
 struct ContentView: View {
     
     @State var showCaptureImageView: Bool = false
-    @State var inventory: [String:Int] = ["A":-1, "B":-1, "C":-1, "D":-1]
+    @State var inventory:[String : TicketDetail] = ["A":TicketDetail(count: -1,image: ""),
+                                                    "B":TicketDetail(count: -1,image: ""),
+                                                    "C":TicketDetail(count: -1,image: ""),
+                                                    "D":TicketDetail(count: -1,image: "")]
     
     @State var picked: String? = ""
     @State private var action: Int? = 0
     
     var body: some View {
         NavigationView{
-            ZStack
-                {
-                    Color.white
-                    
-                    VStack(alignment: .leading) {
-                        HStack {                Text("Livingston").font(.headline).foregroundColor(Color.black)
-                            Spacer()
-                        }
-                        HStack {
-                            NavigationLink(destination: TicketView(), tag: 1, selection: $action) {
-                                EmptyView()
-                            }
-                            
-                            Button(action: {
-                                self.touchAction("A")
-                                
-                            }) {
-                                Image(self.inventory["A"] == -1 ? "add":
-                                    self.inventory["A"] == 0 ? "no-ticket" : "ticket")
-                                    .renderingMode(.original)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                            //                            }
-                            
-                            Spacer()
-                            Button(action: {
-                                self.touchAction("B")
-                                
-                            }) {
-                                Image(self.inventory["A"] == -1 ? "":
-                                    self.inventory["B"] == -1 ? "add":
-                                    self.inventory["B"] == 0 ? "no-ticket":"ticket")
-                                    .renderingMode(.original)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                            
-                        }
-                        HStack{
-                            Text("Arena").font(.headline).foregroundColor(Color.black)
-                            Spacer()
-                        }
-                        HStack {
-                            Button(action: {
-                                self.touchAction("C")
-                                
-                            }) {
-                                Image(self.inventory["C"] == -1 ? "add":
-                                    self.inventory["C"] == 0 ? "no-ticket" : "ticket")
-                                    .renderingMode(.original)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                            
-                            Spacer()
-                            Button(action: {
-                                self.touchAction("D")
-                                
-                            }) {
-                                Image(self.inventory["C"] == -1 ? "":
-                                    self.inventory["D"] == -1 ? "add":
-                                    self.inventory["D"] == 0 ? "no-ticket":"ticket")
-                                    .renderingMode(.original)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                            
-                        }
+            ZStack{
+                Color.white
+                
+                VStack(alignment: .leading) {
+                    HStack {                Text("Livingston").font(.headline).foregroundColor(Color.black)
                         Spacer()
-                    }.padding()
-                    
-                    if (showCaptureImageView) {
-                        CaptureImageView(isShown: $showCaptureImageView, picked: $picked, inventory: $inventory)
                     }
+                    HStack {
+                        NavigationLink(destination: TicketView(), tag: 1, selection: $action) {
+                            EmptyView()
+                        }
+                        
+                        Button(action: {
+                            self.touchAction("A")
+                            
+                        }) {
+                            Image(self.inventory["A"]?.count == -1 ? "add":
+                                self.inventory["A"]?.count == 0 ? "no-ticket" : "ticket")
+                                .renderingMode(.original)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                        //                            }
+                        
+                        Spacer()
+                        Button(action: {
+                            self.touchAction("B")
+                            
+                        }) {
+                            Image(self.inventory["A"]?.count == -1 ? "":
+                                self.inventory["B"]?.count == -1 ? "add":
+                                self.inventory["B"]?.count == 0 ? "no-ticket":"ticket")
+                                .renderingMode(.original)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                        
+                    }
+                    HStack{
+                        Text("Arena").font(.headline).foregroundColor(Color.black)
+                        Spacer()
+                    }
+                    HStack {
+                        Button(action: {
+                            self.touchAction("C")
+                            
+                        }) {
+                            Image(self.inventory["C"]?.count == -1 ? "add":
+                                self.inventory["C"]?.count == 0 ? "no-ticket" : "ticket")
+                                .renderingMode(.original)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                        
+                        Spacer()
+                        Button(action: {
+                            self.touchAction("D")
+                            
+                        }) {
+                            Image(self.inventory["C"]?.count == -1 ? "":
+                                self.inventory["D"]?.count == -1 ? "add":
+                                self.inventory["D"]?.count == 0 ? "no-ticket":"ticket")
+                                .renderingMode(.original)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                        
+                    }
+                    Spacer()
+                }.padding()
+                
+                if (showCaptureImageView) {
+                    CaptureImageView(isShown: $showCaptureImageView, picked: $picked, inventory: $inventory)
+                }
             }.navigationBarTitle("TicMaster", displayMode: .inline)
             //                .navigationBarHidden(true)
             
@@ -102,7 +104,7 @@ struct ContentView: View {
     private func touchAction(_ btn: String) {
         print(btn)
         
-        if(self.inventory[btn]! >= 0){
+        if(self.inventory[btn]!.count >= 0){
             self.action = 1
         } else {
             self.picked = btn
@@ -127,7 +129,7 @@ struct CaptureImageView {
     /// MARK: - Properties
     @Binding var isShown: Bool
     @Binding var picked: String?
-    @Binding var inventory:[String:Int]
+    @Binding var inventory:[String : TicketDetail]
     //    var result: Bool = false
     
     func makeCoordinator() -> Coordinator {
@@ -149,3 +151,16 @@ extension CaptureImageView: UIViewControllerRepresentable {
         
     }
 }
+
+struct Tickets {
+    var A: TicketDetail
+    var B: TicketDetail
+    var C: TicketDetail
+    var D: TicketDetail
+}
+
+struct TicketDetail {
+    var count: Int
+    var image: String
+}
+
