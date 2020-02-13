@@ -9,12 +9,15 @@
 import SwiftUI
 
 struct TicketView: View {
+    let name: ContentView.Item
+    let tickets: Tickets
     var body: some View {
         
         Image(uiImage: getSavedImage(named: "haha.png")! )
         .resizable()
         .scaledToFit()
         .frame(width: 200.0,height:200)
+        
     }
     
     func getSavedImage(named: String) -> UIImage? {
@@ -27,6 +30,6 @@ struct TicketView: View {
 
 struct TicketView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketView()
+        TicketView(name: ContentView.Item.A, tickets: Tickets())
     }
 }

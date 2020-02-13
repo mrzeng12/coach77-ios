@@ -11,9 +11,9 @@ import SwiftUI
 class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @Binding var isCoordinatorShown: Bool
-    @Binding var picked: String?
+    @Binding var picked: ContentView.Item
     @Binding var inventory:Tickets
-    init(isShown: Binding<Bool>, picked: Binding<String?>, inventory: Binding<Tickets>) {
+    init(isShown: Binding<Bool>, picked: Binding<ContentView.Item>, inventory: Binding<Tickets>) {
         
         _isCoordinatorShown = isShown
         _picked = picked
@@ -25,23 +25,19 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
         guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
         switch picked {
-        case "A":
+        case ContentView.Item.A:
             
             let imageName = UUID().uuidString
             if(saveImage(image: unwrapImage, name: imageName)){
+                inventory.A.image = imageName
                 inventory.A.count = 10
             }
-        case "B":
-            
+        case ContentView.Item.B:
             inventory.B.count = 10
-        case "C":
-            
+        case ContentView.Item.C:
             inventory.C.count = 10
-        case "D":
-            
+        case ContentView.Item.D:
             inventory.D.count = 10
-        default:
-            print("wrong")
         }
         
         isCoordinatorShown = false
