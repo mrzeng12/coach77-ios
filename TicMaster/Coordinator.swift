@@ -12,8 +12,8 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
     
     @Binding var isCoordinatorShown: Bool
     @Binding var picked: String?
-    @Binding var inventory:[String : TicketDetail]
-    init(isShown: Binding<Bool>, picked: Binding<String?>, inventory: Binding<[String : TicketDetail]>) {
+    @Binding var inventory:Tickets
+    init(isShown: Binding<Bool>, picked: Binding<String?>, inventory: Binding<Tickets>) {
         
         _isCoordinatorShown = isShown
         _picked = picked
@@ -29,17 +29,17 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
             
             let imageName = UUID().uuidString
             if(saveImage(image: unwrapImage, name: imageName)){
-                inventory["A"]?.count = 10
+                inventory.A.count = 10
             }
         case "B":
             
-            inventory["B"]?.count = 10
+            inventory.B.count = 10
         case "C":
             
-            inventory["C"]?.count = 10
+            inventory.C.count = 10
         case "D":
             
-            inventory["D"]?.count = 10
+            inventory.D.count = 10
         default:
             print("wrong")
         }

@@ -11,10 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var showCaptureImageView: Bool = false
-    @State var inventory:[String : TicketDetail] = ["A":TicketDetail(count: -1,image: ""),
-                                                    "B":TicketDetail(count: -1,image: ""),
-                                                    "C":TicketDetail(count: -1,image: ""),
-                                                    "D":TicketDetail(count: -1,image: "")]
+    @State var inventory = Tickets()
     
     @State var picked: String? = ""
     @State private var action: Int? = 0
@@ -37,8 +34,8 @@ struct ContentView: View {
                             self.touchAction("A")
                             
                         }) {
-                            Image(self.inventory["A"]?.count == -1 ? "add":
-                                self.inventory["A"]?.count == 0 ? "no-ticket" : "ticket")
+                            Image(self.inventory.A.count == -1 ? "add":
+                                self.inventory.A.count == 0 ? "no-ticket" : "ticket")
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -50,9 +47,9 @@ struct ContentView: View {
                             self.touchAction("B")
                             
                         }) {
-                            Image(self.inventory["A"]?.count == -1 ? "":
-                                self.inventory["B"]?.count == -1 ? "add":
-                                self.inventory["B"]?.count == 0 ? "no-ticket":"ticket")
+                            Image(self.inventory.A.count == -1 ? "":
+                                self.inventory.B.count == -1 ? "add":
+                                self.inventory.B.count == 0 ? "no-ticket":"ticket")
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -68,8 +65,8 @@ struct ContentView: View {
                             self.touchAction("C")
                             
                         }) {
-                            Image(self.inventory["C"]?.count == -1 ? "add":
-                                self.inventory["C"]?.count == 0 ? "no-ticket" : "ticket")
+                            Image(self.inventory.C.count == -1 ? "add":
+                                self.inventory.C.count == 0 ? "no-ticket" : "ticket")
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -80,9 +77,9 @@ struct ContentView: View {
                             self.touchAction("D")
                             
                         }) {
-                            Image(self.inventory["C"]?.count == -1 ? "":
-                                self.inventory["D"]?.count == -1 ? "add":
-                                self.inventory["D"]?.count == 0 ? "no-ticket":"ticket")
+                            Image(self.inventory.C.count == -1 ? "":
+                                self.inventory.D.count == -1 ? "add":
+                                self.inventory.D.count == 0 ? "no-ticket":"ticket")
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -103,8 +100,20 @@ struct ContentView: View {
     }
     private func touchAction(_ btn: String) {
         print(btn)
-        
-        if(self.inventory[btn]!.count >= 0){
+        var detail:TicketDetail? = nil
+        switch btn {
+        case "A":
+            detail = inventory.A
+        case "B":
+            detail = inventory.B
+        case "C":
+            detail = inventory.C
+        case "D":
+            detail = inventory.D
+        default:
+            print("error")
+        }
+        if(detail!.count >= 0){
             self.action = 1
         } else {
             self.picked = btn
@@ -129,7 +138,7 @@ struct CaptureImageView {
     /// MARK: - Properties
     @Binding var isShown: Bool
     @Binding var picked: String?
-    @Binding var inventory:[String : TicketDetail]
+    @Binding var inventory:Tickets
     //    var result: Bool = false
     
     func makeCoordinator() -> Coordinator {
@@ -153,14 +162,14 @@ extension CaptureImageView: UIViewControllerRepresentable {
 }
 
 struct Tickets {
-    var A: TicketDetail
-    var B: TicketDetail
-    var C: TicketDetail
-    var D: TicketDetail
+    var A: TicketDetail = TicketDetail()
+    var B: TicketDetail = TicketDetail()
+    var C: TicketDetail = TicketDetail()
+    var D: TicketDetail = TicketDetail()
 }
 
 struct TicketDetail {
-    var count: Int
-    var image: String
+    var count: Int = -1
+    var image: String = ""
 }
 
