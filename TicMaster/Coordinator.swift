@@ -27,6 +27,7 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
         switch picked {
         case "A":
             //            imageA = Image(uiImage: unwrapImage)
+            saveImage(image: unwrapImage, name: "haha.png")
             inventory["A"] = 10
         case "B":
             //            imageB = Image(uiImage: unwrapImage)
@@ -48,5 +49,23 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
         
         isCoordinatorShown = false
     }
+    
+    func saveImage(image: UIImage, name: String) -> Bool {
+        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
+            return false
+        }
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+            return false
+        }
+        do {
+            try data.write(to: directory.appendingPathComponent(name)!)
+            return true
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
+    
 }
 

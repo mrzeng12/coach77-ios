@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B22CA60723F5A79200A2DAC6 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22CA60623F5A79200A2DAC6 /* TicketView.swift */; };
 		B2C50CF823E761CB00B46831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50CF723E761CB00B46831 /* AppDelegate.swift */; };
 		B2C50CFA23E761CB00B46831 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50CF923E761CB00B46831 /* SceneDelegate.swift */; };
 		B2C50CFC23E761CB00B46831 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50CFB23E761CB00B46831 /* ContentView.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B22CA60623F5A79200A2DAC6 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		B2C50CF423E761CB00B46831 /* TicMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C50CF723E761CB00B46831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2C50CF923E761CB00B46831 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				B2C50CF923E761CB00B46831 /* SceneDelegate.swift */,
 				B2C50CFB23E761CB00B46831 /* ContentView.swift */,
 				B2C50D2D23F0DC1200B46831 /* Coordinator.swift */,
+				B22CA60623F5A79200A2DAC6 /* TicketView.swift */,
 				B2C50CFD23E761D000B46831 /* Assets.xcassets */,
 				B2C50D0223E761D000B46831 /* LaunchScreen.storyboard */,
 				B2C50D0523E761D000B46831 /* Info.plist */,
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C50CF823E761CB00B46831 /* AppDelegate.swift in Sources */,
+				B22CA60723F5A79200A2DAC6 /* TicketView.swift in Sources */,
 				B2C50D2E23F0DC1300B46831 /* Coordinator.swift in Sources */,
 				B2C50CFA23E761CB00B46831 /* SceneDelegate.swift in Sources */,
 				B2C50CFC23E761CB00B46831 /* ContentView.swift in Sources */,

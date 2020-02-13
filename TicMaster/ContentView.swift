@@ -14,87 +14,102 @@ struct ContentView: View {
     @State var inventory: [String:Int] = ["A":-1, "B":-1, "C":-1, "D":-1]
     
     @State var picked: String? = ""
+    @State private var action: Int? = 0
     
     var body: some View {
         NavigationView{
-        ZStack
-            {
-                Color.white
-                VStack(alignment: .leading) {
-                    HStack {                Text("Livingston").font(.headline).foregroundColor(Color.black)
-                        Spacer()
-                    }
-                    HStack {
-                        Button(action: {
-                            self.touchAction("A")
-                            
-                        }) {
-                            Image(self.inventory["A"] == -1 ? "add":
-                                self.inventory["A"] == 0 ? "no-ticket" : "ticket")
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+            ZStack
+                {
+                    Color.white
+                    
+                    VStack(alignment: .leading) {
+                        HStack {                Text("Livingston").font(.headline).foregroundColor(Color.black)
+                            Spacer()
                         }
-                        
-                        Spacer()
-                        Button(action: {
-                            self.touchAction("B")
+                        HStack {
+                            NavigationLink(destination: TicketView(), tag: 1, selection: $action) {
+                                EmptyView()
+                            }
                             
-                        }) {
-                            Image(self.inventory["A"] == -1 ? "":
-                                self.inventory["B"] == -1 ? "add":
-                                self.inventory["B"] == 0 ? "no-ticket":"ticket")
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        }
-                        
-                    }
-                    HStack{
-                        Text("Arena").font(.headline).foregroundColor(Color.black)
-                        Spacer()
-                    }
-                    HStack {
-                        Button(action: {
-                            self.touchAction("C")
+                            Button(action: {
+                                self.touchAction("A")
+                                
+                            }) {
+                                Image(self.inventory["A"] == -1 ? "add":
+                                    self.inventory["A"] == 0 ? "no-ticket" : "ticket")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                            //                            }
                             
-                        }) {
-                            Image(self.inventory["C"] == -1 ? "add":
-                                self.inventory["C"] == 0 ? "no-ticket" : "ticket")
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        }
-                        
-                        Spacer()
-                        Button(action: {
-                            self.touchAction("D")
+                            Spacer()
+                            Button(action: {
+                                self.touchAction("B")
+                                
+                            }) {
+                                Image(self.inventory["A"] == -1 ? "":
+                                    self.inventory["B"] == -1 ? "add":
+                                    self.inventory["B"] == 0 ? "no-ticket":"ticket")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
                             
-                        }) {
-                            Image(self.inventory["C"] == -1 ? "":
-                                self.inventory["D"] == -1 ? "add":
-                                self.inventory["D"] == 0 ? "no-ticket":"ticket")
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
                         }
-                        
+                        HStack{
+                            Text("Arena").font(.headline).foregroundColor(Color.black)
+                            Spacer()
+                        }
+                        HStack {
+                            Button(action: {
+                                self.touchAction("C")
+                                
+                            }) {
+                                Image(self.inventory["C"] == -1 ? "add":
+                                    self.inventory["C"] == 0 ? "no-ticket" : "ticket")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                            
+                            Spacer()
+                            Button(action: {
+                                self.touchAction("D")
+                                
+                            }) {
+                                Image(self.inventory["C"] == -1 ? "":
+                                    self.inventory["D"] == -1 ? "add":
+                                    self.inventory["D"] == 0 ? "no-ticket":"ticket")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                            
+                        }
+                        Spacer()
+                    }.padding()
+                    
+                    if (showCaptureImageView) {
+                        CaptureImageView(isShown: $showCaptureImageView, picked: $picked, inventory: $inventory)
                     }
-                    Spacer()
-                }.padding()
-                
-                if (showCaptureImageView) {
-                    CaptureImageView(isShown: $showCaptureImageView, picked: $picked, inventory: $inventory)
-                }
-        }//.navigationBarTitle("Coach")
+            }.navigationBarTitle("TicMaster", displayMode: .inline)
+            //                .navigationBarHidden(true)
+            
             
         }
     }
     private func touchAction(_ btn: String) {
         print(btn)
-        //        ImagePicker(image: self.$image)
-        self.picked = btn
-        self.showCaptureImageView.toggle()
+        
+        if(self.inventory[btn]! >= 0){
+            self.action = 1
+        } else {
+            self.picked = btn
+            self.showCaptureImageView.toggle()
+        }
+        
+        
     }
 }
 
