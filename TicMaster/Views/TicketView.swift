@@ -13,11 +13,24 @@ struct TicketView: View {
     let tickets: Tickets
     var body: some View {
         
-        Image(uiImage: getSavedImage(named: "haha.png")! )
-        .resizable()
-        .scaledToFit()
-        .frame(width: 200.0,height:200)
+        Image(uiImage: getSavedImage(named: getImageName(name: name))! )
+            .resizable()
+            .scaledToFit()
+            .frame(width: 200.0,height:200)
         
+    }
+    
+    func getImageName(name: Item) ->String{
+        switch name {
+        case .A:
+            return tickets.A.image
+        case .B:
+            return tickets.B.image
+        case .C:
+            return tickets.C.image
+        case .D:
+            return tickets.D.image
+        }
     }
     
     func getSavedImage(named: String) -> UIImage? {

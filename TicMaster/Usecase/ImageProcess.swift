@@ -25,7 +25,8 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
         guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         let imageName = UUID().uuidString
         
-        if(saveImage(image: unwrapImage, name: imageName)){
+        
+        if(saveImage(image: unwrapImage, fileName: imageName)){
             switch picked {
             case Item.A:
                 inventory.A.image = imageName
@@ -42,7 +43,6 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
             }
         }
         
-        
         isCoordinatorShown = false
     }
     
@@ -51,7 +51,7 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
         isCoordinatorShown = false
     }
     
-    func saveImage(image: UIImage, name: String) -> Bool {
+    func saveImage(image: UIImage, fileName: String) -> Bool {
         guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
             return false
         }
@@ -59,11 +59,30 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
             return false
         }
         do {
-            try data.write(to: directory.appendingPathComponent(name)!)
+            try data.write(to: directory.appendingPathComponent(fileName)!)
             return true
         } catch {
             print(error.localizedDescription)
             return false
+        }
+    }
+    
+    func removeExistingImage(fileName: String) {
+        if !fileName.isEmpty {
+            return
+        }
+        do {
+            guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+                return
+            }
+            if FileManager.default.fileExists(atPath: directory.appendingPathComponent(fileName)!.absoluteString) {
+                try FileManager.default.removeItem(atPath: directory.appendingPathComponent(fileName)!.absoluteString)
+            } else {
+                print("File does not exist")
+            }
+            
+        } catch let error as NSError {
+            print("Error: \(error)")
         }
     }
     
