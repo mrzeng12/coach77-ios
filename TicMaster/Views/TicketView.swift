@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TicketView: View {
     let name: Item
-    let tickets: Tickets
+    let tickets: [Item:TicketDetail]
     var body: some View {
         
         Image(uiImage: getSavedImage(named: getImageName(name: name))! )
@@ -21,16 +21,7 @@ struct TicketView: View {
     }
     
     func getImageName(name: Item) ->String{
-        switch name {
-        case .A:
-            return tickets.A.image
-        case .B:
-            return tickets.B.image
-        case .C:
-            return tickets.C.image
-        case .D:
-            return tickets.D.image
-        }
+        return tickets[name]!.image
     }
     
     func getSavedImage(named: String) -> UIImage? {
@@ -43,6 +34,6 @@ struct TicketView: View {
 
 struct TicketView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketView(name: Item.A, tickets: Tickets())
+        TicketView(name: Item.A, tickets: [.A:TicketDetail()])
     }
 }

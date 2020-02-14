@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var showCaptureImageView: Bool = false
-    @State var inventory = Tickets()
+    @State var inventory: [Item:TicketDetail] = [.A:TicketDetail(), .B:TicketDetail(), .C:TicketDetail(), .D:TicketDetail()]
     
     @State var picked: Item
     @State private var action: Int? = 0
@@ -36,7 +36,7 @@ struct ContentView: View {
                             self.touchAction(.A)
                             
                         }) {
-                            Image(getImage(num: inventory.A.count))
+                            Image(getImage(num: inventory[.A]!.count))
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -48,10 +48,10 @@ struct ContentView: View {
                             self.touchAction(.B)
                             
                         }) {
-                            if(self.inventory.A.count == -1){
+                            if(self.inventory[.A]!.count == -1){
                                 Spacer()
                             }else {
-                                Image(getImage(num: inventory.B.count))
+                                Image(getImage(num: inventory[.B]!.count))
                                     .renderingMode(.original)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -68,7 +68,7 @@ struct ContentView: View {
                             self.touchAction(.C)
                             
                         }) {
-                            Image(getImage(num: inventory.C.count))
+                            Image(getImage(num: inventory[.C]!.count))
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -79,10 +79,10 @@ struct ContentView: View {
                             self.touchAction(.D)
                             
                         }) {
-                            if(self.inventory.C.count == -1){
+                            if(self.inventory[.C]!.count == -1){
                                 Spacer()
                             }else {
-                                Image(getImage(num: inventory.D.count))
+                                Image(getImage(num: inventory[.D]!.count))
                                     .renderingMode(.original)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -104,19 +104,10 @@ struct ContentView: View {
     }
     private func touchAction(_ btn: Item) {
 
-        var detail:TicketDetail? = nil
-        switch btn {
-        case .A:
-            detail = inventory.A
-        case .B:
-            detail = inventory.B
-        case .C:
-            detail = inventory.C
-        case .D:
-            detail = inventory.D
-        }
+        let detail:TicketDetail = inventory[btn]!
+        
         self.picked = btn
-        if(detail!.count >= 0){
+        if(detail.count >= 0){
             self.action = 1
         } else {
             self.showCaptureImageView.toggle()

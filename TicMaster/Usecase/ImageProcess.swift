@@ -12,8 +12,8 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
     
     @Binding var isCoordinatorShown: Bool
     @Binding var picked: Item
-    @Binding var inventory:Tickets
-    init(isShown: Binding<Bool>, picked: Binding<Item>, inventory: Binding<Tickets>) {
+    @Binding var inventory:[Item:TicketDetail]
+    init(isShown: Binding<Bool>, picked: Binding<Item>, inventory: Binding<[Item:TicketDetail]>) {
         
         _isCoordinatorShown = isShown
         _picked = picked
@@ -27,20 +27,9 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
         
         
         if(saveImage(image: unwrapImage, fileName: imageName)){
-            switch picked {
-            case Item.A:
-                inventory.A.image = imageName
-                inventory.A.count = 10
-            case Item.B:
-                inventory.B.image = imageName
-                inventory.B.count = 10
-            case Item.C:
-                inventory.C.image = imageName
-                inventory.C.count = 10
-            case Item.D:
-                inventory.D.image = imageName
-                inventory.D.count = 10
-            }
+            
+            inventory[picked]!.image = imageName
+            inventory[picked]!.count = 10
         }
         
         isCoordinatorShown = false

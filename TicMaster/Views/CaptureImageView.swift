@@ -13,7 +13,7 @@ struct CaptureImageView {
     /// MARK: - Properties
     @Binding var isShown: Bool
     @Binding var picked: Item
-    @Binding var inventory:Tickets
+    @Binding var inventory: [Item:TicketDetail]
     
     func makeCoordinator() -> ImageProcess {
         return ImageProcess(isShown: $isShown, picked: $picked, inventory: $inventory)
