@@ -26,7 +26,7 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
         let imageName = UUID().uuidString
         
         
-        if(saveImage(image: unwrapImage, fileName: imageName)){
+        if(FileManager.default.saveImage(image: unwrapImage, fileName: imageName)){
             
             inventory[picked]!.image = imageName
             inventory[picked]!.count = 10
@@ -38,41 +38,6 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
         isCoordinatorShown = false
-    }
-    
-    func saveImage(image: UIImage, fileName: String) -> Bool {
-        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
-            return false
-        }
-        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
-            return false
-        }
-        do {
-            try data.write(to: directory.appendingPathComponent(fileName)!)
-            return true
-        } catch {
-            print(error.localizedDescription)
-            return false
-        }
-    }
-    
-    func removeExistingImage(fileName: String) {
-        if !fileName.isEmpty {
-            return
-        }
-        do {
-            guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
-                return
-            }
-            if FileManager.default.fileExists(atPath: directory.appendingPathComponent(fileName)!.absoluteString) {
-                try FileManager.default.removeItem(atPath: directory.appendingPathComponent(fileName)!.absoluteString)
-            } else {
-                print("File does not exist")
-            }
-            
-        } catch let error as NSError {
-            print("Error: \(error)")
-        }
     }
     
     
