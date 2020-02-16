@@ -126,11 +126,15 @@ struct TicketListView: View {
                     CaptureImageView(isShown: $showCaptureImageView, picked: $picked, inventory: $inventory)
                 }
             }.navigationBarTitle("TicMaster", displayMode: .inline)
-            //                .navigationBarHidden(true)
-            
+                .onAppear{self.loadData()}
             
         }
     }
+    
+    private func loadData() {
+        inventory = DataIO().loadData()
+    }
+    
     private func touchAction(_ btn: Item) {
         
         let detail:TicketDetail = inventory[btn]!
@@ -148,26 +152,34 @@ struct TicketListView: View {
         
         if picked == .A {
             delete(item: .A)
-            inventory[.A] = inventory[.B]
+            transfer(to: .A, from: .B)
             reset(item: .B)
         } else if picked == .C {
             delete(item: .C)
-            inventory[.C] = inventory[.D]
+            transfer(to: .C, from: .D)
             reset(item: .D)
         } else {
             delete(item: picked)
         }
         FileManager.default.clearTmpDirectory()
+        
+        DataIO().saveData(inventory: inventory)
+    }
+    
+    private func transfer(to:Item, from:Item){
+        inventory[to]!.image = inventory[from]!.image
+        inventory[to]!.count = inventory[from]!.count
     }
     
     private func delete(item:Item){
         FileManager.default.removeExistingImage(fileName: inventory[item]!.image)
         inventory[item]!.count = -1
+        inventory[item]!.image = ""
     }
     
     private func reset(item:Item){
-        inventory[item]!.image = ""
         inventory[item]!.count = -1
+        inventory[item]!.image = ""
     }
     
     

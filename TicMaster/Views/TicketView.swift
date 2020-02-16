@@ -12,11 +12,32 @@ struct TicketView: View {
     let name: Item
     let tickets: [Item:TicketDetail]
     var body: some View {
-        
-        Image(uiImage: getSavedImage(named: getImageName(name: name))! )
-            .resizable()
-            .scaledToFit()
-            .frame(width: 200.0,height:200)
+        VStack(alignment: .leading) {
+            Text("Livingston").font(.headline).foregroundColor(Color.black)
+            Text("9 Left").font(.body).foregroundColor(Color.black)
+            Image(uiImage: getSavedImage(named: getImageName(name: name))! )
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            Button(action: {
+//                self.showDetails.toggle()
+            }) {
+                HStack {
+                    
+                    Text("USE")
+                        .fontWeight(.semibold)
+//                        .font(.title)
+                }
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding()
+                .foregroundColor(.white)
+//                .background(
+//                    LinearGradient(gradient: Gradient(colors: [.green, .blue]), startPoint: .leading, endPoint: .trailing))
+                    .background(Color.green)
+                .cornerRadius(8)
+                .padding(.horizontal, 20)
+            }
+        }
         
     }
     

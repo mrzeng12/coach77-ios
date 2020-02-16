@@ -9,8 +9,8 @@
 import Foundation
 
 enum Item: String {
-    case A
-    case B
-    case C
-    case D
+    case A = "A"
+    case B = "B"
+    case C = "C"
+    case D = "D"
 }

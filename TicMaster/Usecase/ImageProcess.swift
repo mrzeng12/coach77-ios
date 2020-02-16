@@ -30,6 +30,7 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
             
             inventory[picked]!.image = imageName
             inventory[picked]!.count = 10
+            DataIO().saveData(inventory: inventory)
         }
         
         isCoordinatorShown = false

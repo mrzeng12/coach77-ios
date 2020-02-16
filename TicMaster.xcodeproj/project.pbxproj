@@ -22,6 +22,7 @@
 		B2C50D0F23E761D000B46831 /* TicMasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50D0E23E761D000B46831 /* TicMasterTests.swift */; };
 		B2C50D1A23E761D000B46831 /* TicMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C50D1923E761D000B46831 /* TicMasterUITests.swift */; };
 		B2C9515723F7BA020040A3A0 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C9515623F7BA020040A3A0 /* FileManager.swift */; };
+		B2C9515923F8D2510040A3A0 /* DataIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C9515823F8D2510040A3A0 /* DataIO.swift */; };
 		B2E9ED8023F603C9008EF566 /* ImageIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E9ED7F23F603C9008EF566 /* ImageIO.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		B2C50D1923E761D000B46831 /* TicMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicMasterUITests.swift; sourceTree = "<group>"; };
 		B2C50D1B23E761D000B46831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2C9515623F7BA020040A3A0 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		B2C9515823F8D2510040A3A0 /* DataIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataIO.swift; sourceTree = "<group>"; };
 		B2E9ED7F23F603C9008EF566 /* ImageIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageIO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				B22CA61223F5F45100A2DAC6 /* ImageProcess.swift */,
 				B2E9ED7F23F603C9008EF566 /* ImageIO.swift */,
 				B2C9515623F7BA020040A3A0 /* FileManager.swift */,
+				B2C9515823F8D2510040A3A0 /* DataIO.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C50CF823E761CB00B46831 /* AppDelegate.swift in Sources */,
+				B2C9515923F8D2510040A3A0 /* DataIO.swift in Sources */,
 				B22CA60923F5F23500A2DAC6 /* Tickets.swift in Sources */,
 				B22CA60723F5A79200A2DAC6 /* TicketView.swift in Sources */,
 				B22CA61623F5F57200A2DAC6 /* ViewItem.swift in Sources */,
