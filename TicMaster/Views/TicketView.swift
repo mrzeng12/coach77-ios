@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TicketView: View {
     let name: Item
+    @State var brightness: CGFloat
     @State var tickets: [Item:TicketDetail]
     
     var body: some View {
@@ -48,7 +49,13 @@ struct TicketView: View {
                 .background(Color.init(hex: tickets[name]!.count > 0 ?"4ABC96":"DDDDDD"))
                 .cornerRadius(8)
             }.padding(.horizontal, 20).padding(.bottom, 20)
-        }
+        }.onAppear(perform: {
+            self.brightness = UIScreen.main.brightness
+            UIScreen.main.brightness = CGFloat(1.0)
+        })
+            .onDisappear(perform: {
+                UIScreen.main.brightness = self.brightness
+            })
         
     }
     
@@ -85,7 +92,7 @@ struct TicketView: View {
 
 struct TicketView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketView(name: Item.A, tickets: [.A:TicketDetail()])
+        TicketView(name: Item.A, brightness: 1.0, tickets: [.A:TicketDetail()])
     }
 }
 

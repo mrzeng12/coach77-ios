@@ -24,11 +24,11 @@ struct TicketListView: View {
                 Color.white
                 
                 VStack(alignment: .leading) {
-                    HStack {                Text("Livingston").font(.headline).foregroundColor(Color.black)
+                    HStack {                Text("Livingston").font(.headline).foregroundColor(Color.black).padding(.top, 10)
                         Spacer()
                     }
                     HStack {
-                        NavigationLink(destination: TicketView(name: picked, tickets: inventory), tag: 1, selection: $action) {
+                        NavigationLink(destination: TicketView(name: picked, brightness: 1.0, tickets: inventory), tag: 1, selection: $action) {
                             EmptyView()
                         }
                         Image(getImage(num: inventory[.A]!.count))
@@ -84,7 +84,7 @@ struct TicketListView: View {
                         
                     }
                     HStack{
-                        Text("Arena").font(.headline).foregroundColor(Color.black)
+                        Text("Arena").font(.headline).foregroundColor(Color.black).padding(.top, 10)
                         Spacer()
                     }
                     HStack {
