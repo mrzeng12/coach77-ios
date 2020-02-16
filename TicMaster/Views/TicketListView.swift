@@ -161,9 +161,9 @@ struct TicketListView: View {
         } else {
             delete(item: picked)
         }
-        FileManager.default.clearTmpDirectory()
         
         DataIO().saveData(inventory: inventory)
+        FileManager.default.clearTmpDirectory()
     }
     
     private func transfer(to:Item, from:Item){

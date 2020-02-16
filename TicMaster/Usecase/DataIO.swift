@@ -19,6 +19,7 @@ struct DataIO {
             
             let defaults = UserDefaults.standard
             defaults.set(json, forKey: "inventory")
+            print(defaults.synchronize())
         } catch  let error as NSError {
             print("Error: \(error)")
         }

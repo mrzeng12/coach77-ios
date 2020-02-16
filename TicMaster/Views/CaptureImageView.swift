@@ -24,6 +24,7 @@ extension CaptureImageView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<CaptureImageView>) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
+        picker.allowsEditing = true
         /// Default is images gallery. Un-comment the next line of code if you would like to test camera
         //    picker.sourceType = .camera
         return picker

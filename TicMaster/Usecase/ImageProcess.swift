@@ -22,7 +22,7 @@ class ImageProcess: NSObject, UINavigationControllerDelegate, UIImagePickerContr
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        guard let unwrapImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
         let imageName = UUID().uuidString
         
         
