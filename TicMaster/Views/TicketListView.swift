@@ -35,10 +35,17 @@ struct TicketListView: View {
                             .renderingMode(.original)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .overlay(
+                                Text((inventory[.A]!.count != -1) ? String(inventory[.A]!.count) : "")
+                                    .foregroundColor(inventory[.A]!.count>2 ? Color.white: Color.red)
+                                    .font(.body)
+                                    .padding(.bottom, 35)
+                                ,alignment: .bottom)
                             .onTapGesture {
                                 self.picked = .A
                                 self.touchAction(.A)
                         }
+                            
                         .onLongPressGesture {
                             self.picked = .A
                             self.showingAlert = true
@@ -58,6 +65,12 @@ struct TicketListView: View {
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
+                                .overlay(
+                                    Text((inventory[.B]!.count != -1) ? String(inventory[.B]!.count) : "")
+                                        .foregroundColor(inventory[.B]!.count>2 ? Color.white: Color.red)
+                                        .font(.body)
+                                        .padding(.bottom, 35)
+                                    ,alignment: .bottom)
                                 .onTapGesture {
                                     self.picked = .B
                                     self.touchAction(.B)
@@ -80,6 +93,12 @@ struct TicketListView: View {
                             .renderingMode(.original)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .overlay(
+                                Text((inventory[.C]!.count != -1) ? String(inventory[.C]!.count) : "")
+                                    .foregroundColor(inventory[.C]!.count>2 ? Color.white: Color.red)
+                                    .font(.body)
+                                    .padding(.bottom, 35)
+                                ,alignment: .bottom)
                             .onTapGesture {
                                 self.picked = .C
                                 self.touchAction(.C)
@@ -103,6 +122,14 @@ struct TicketListView: View {
                                 .renderingMode(.original)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
+                                .overlay(
+                                    
+                                    Text((inventory[.D]!.count != -1) ? String(inventory[.D]!.count) : "")
+                                        .foregroundColor(inventory[.D]!.count>2 ? Color.white: Color.red)
+                                        .font(.body)
+                                        .padding(.bottom, 35)
+                                    
+                                    ,alignment: .bottom)
                                 .onTapGesture {
                                     self.picked = .D
                                     self.touchAction(.D)
