@@ -10,40 +10,36 @@ import SwiftUI
 
 struct DataIO {
     func saveData(inventory: [Item:TicketDetail]){
+        print("save data")
+        print(inventory)
         do {
-            let defaults = UserDefaults.standard
-            var encodedData = try NSKeyedArchiver.archivedData(withRootObject: inventory[.A]!, requiringSecureCoding: false)
-            defaults.set(encodedData, forKey: "inventoryA")
-            encodedData = try NSKeyedArchiver.archivedData(withRootObject: inventory[.B]!, requiringSecureCoding: false)
-            defaults.set(encodedData, forKey: "inventoryB")
-            encodedData = try NSKeyedArchiver.archivedData(withRootObject: inventory[.C]!, requiringSecureCoding: false)
-            defaults.set(encodedData, forKey: "inventoryC")
-            encodedData = try NSKeyedArchiver.archivedData(withRootObject: inventory[.D]!, requiringSecureCoding: false)
-            defaults.set(encodedData, forKey: "inventoryD")
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(inventory)
+            let json = String(data: jsonData, encoding: String.Encoding.utf8)
             
+            let defaults = UserDefaults.standard
+            defaults.set(json, forKey: "inventory")
         } catch  let error as NSError {
             print("Error: \(error)")
         }
     }
     func loadData() -> [Item:TicketDetail] {
+        print("load data")
         do {
             let defaults = UserDefaults.standard
-            var decodedData = defaults.object(forKey: "inventoryA") as? Data;
-            let itemA:TicketDetail = decodedData == nil ? TicketDetail(): try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decodedData!) as! TicketDetail
-          
-            decodedData = defaults.object(forKey: "inventoryB") as? Data;
-            let itemB:TicketDetail = decodedData == nil ? TicketDetail(): try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decodedData!) as! TicketDetail
-            
-            decodedData = defaults.object(forKey: "inventoryC") as? Data;
-            let itemC:TicketDetail = decodedData == nil ? TicketDetail(): try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decodedData!) as! TicketDetail
-            
-            decodedData = defaults.object(forKey: "inventoryD") as? Data;
-            let itemD:TicketDetail = decodedData == nil ? TicketDetail(): try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decodedData!) as! TicketDetail
-            
-            return [.A:itemA, .B:itemB, .C:itemC, .D:itemD]
-        }catch  let error as NSError {
+            let json = defaults.object(forKey: "inventory") as? String
+            if json == nil {
+                return [.A:TicketDetail(), .B:TicketDetail(), .C:TicketDetail(), .D:TicketDetail()]
+            }
+            // Decode
+            let jsonDecoder = JSONDecoder()
+            let jsonData = json!.data(using: .utf8)!
+            let res = try jsonDecoder.decode([Item:TicketDetail].self, from: jsonData)
+            print(res)
+            return res
+        } catch  let error as NSError {
             print("Error: \(error)")
-            return [.A:TicketDetail(), .B:TicketDetail(), .C:TicketDetail(), .D:TicketDetail()]
         }
+        return [.A:TicketDetail(), .B:TicketDetail(), .C:TicketDetail(), .D:TicketDetail()]
     }
 }

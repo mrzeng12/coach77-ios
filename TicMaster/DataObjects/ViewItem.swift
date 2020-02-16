@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Item: String {
+enum Item: String, Codable {
     case A = "A"
     case B = "B"
     case C = "C"
