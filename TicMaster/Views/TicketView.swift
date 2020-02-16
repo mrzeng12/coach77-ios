@@ -10,23 +10,34 @@ import SwiftUI
 
 struct TicketView: View {
     let name: Item
-    let tickets: [Item:TicketDetail]
+    @State var tickets: [Item:TicketDetail]
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Livingston").font(.title).foregroundColor(Color.black)
                 .padding(.vertical, 10).padding(.horizontal, 20).padding(.top, 20)
-            
-            Text("9 Left").font(.headline).foregroundColor(Color.black)
-                .padding(.vertical, 5).padding(.horizontal, 20)
+            HStack(){
+                Text(self.getTicketCount()).font(.headline).bold()
+                    .foregroundColor(tickets[name]!.count > 2 ? Color.black: Color.red)
+                    .padding(.top, 10).padding(.horizontal, 20)
+                Spacer()
+                if(tickets[name]!.count < 10){
+                    Button(action: {
+                        self.unuseBtnTapped()
+                    }) {
+                        Text("UNUSE").font(.subheadline).padding(.top, 10).padding(.horizontal, 20)
+                    }
+                }
+            }
             Spacer()
-            Image(uiImage: getSavedImage(named: getImageName(name: name))! )
+            Image(uiImage: getSavedImage(named: getImageName())! )
                 
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             
             Spacer()
             Button(action: {
-                //                self.showDetails.toggle()
+                self.useBtnTapped()
             }) {
                 HStack {
                     Text("USE").fontWeight(.semibold)
@@ -34,15 +45,19 @@ struct TicketView: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
                 .foregroundColor(.white)
-                .background(Color.init(hex: "4ABC96"))
+                .background(Color.init(hex: tickets[name]!.count > 0 ?"4ABC96":"DDDDDD"))
                 .cornerRadius(8)
             }.padding(.horizontal, 20).padding(.bottom, 20)
         }
         
     }
     
-    func getImageName(name: Item) ->String{
+    func getImageName() ->String{
         return tickets[name]!.image
+    }
+    
+    func getTicketCount()->String{
+        return String(tickets[name]!.count) + " Left"
     }
     
     func getSavedImage(named: String) -> UIImage? {
@@ -51,6 +66,21 @@ struct TicketView: View {
         }
         return nil
     }
+    
+    func unuseBtnTapped() {
+        if tickets[name]!.count < 10 {
+            tickets[name]!.count += 1
+            DataIO().saveData(inventory: self.tickets)
+        }
+    }
+    
+    func useBtnTapped() {
+        if tickets[name]!.count > 0 {
+            tickets[name]!.count -= 1
+            DataIO().saveData(inventory: self.tickets)
+        }
+    }
+    
 }
 
 struct TicketView_Previews: PreviewProvider {
