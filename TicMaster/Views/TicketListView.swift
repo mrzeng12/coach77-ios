@@ -244,7 +244,7 @@ struct TicketListView: View {
             )
                 .onAppear{self.loadData()}
             
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func loadData() {
