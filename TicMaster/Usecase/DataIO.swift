@@ -43,4 +43,18 @@ struct DataIO {
         }
         return [.A:TicketDetail(), .B:TicketDetail(), .C:TicketDetail(), .D:TicketDetail()]
     }
+    
+    func saveData(firstStop: String, secondStop: String){
+        let defaults = UserDefaults.standard
+        defaults.set(firstStop, forKey: "firstStop")
+        defaults.set(secondStop, forKey: "secondStop")
+        defaults.synchronize()
+    }
+    
+    func loadData() -> (String, String) {
+        let defaults = UserDefaults.standard
+        let firstStop = defaults.object(forKey: "firstStop") as? String ?? "Livingston"
+        let secondStop = defaults.object(forKey: "secondStop") as? String ?? "West Orange"
+        return (firstStop, secondStop)
+    }
 }

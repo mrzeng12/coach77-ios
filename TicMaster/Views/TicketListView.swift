@@ -18,13 +18,28 @@ struct TicketListView: View {
     
     @State var showingAlert = false
     
+    @State var isEditing = false
+    @State var firstStop = ""
+    @State var secondStop = ""
+    
     var body: some View {
         NavigationView{
             ZStack{
                 Color.white
                 
                 VStack(alignment: .leading) {
-                    HStack {                Text("Livingston").font(.headline).foregroundColor(Color.black).padding(.top, 10)
+                    HStack {
+                        if isEditing {
+                            TextField("Enter bus stop...", text: $firstStop, onEditingChanged: { (changed) in
+                                
+                            }) {
+                                DataIO().saveData(firstStop: self.firstStop, secondStop: self.secondStop)
+                                self.isEditing = false
+                            }.padding(.vertical, 20).textFieldStyle(RoundedBorderTextFieldStyle()).font(.headline)
+                            
+                        } else {
+                            Text(self.firstStop).font(.headline).foregroundColor(Color.black).padding(.top, 10)
+                        }
                         Spacer()
                     }
                     HStack {
@@ -84,7 +99,17 @@ struct TicketListView: View {
                         
                     }
                     HStack{
-                        Text("Arena").font(.headline).foregroundColor(Color.black).padding(.top, 10)
+                        if isEditing {
+                            TextField("Enter bus stop...", text: $secondStop, onEditingChanged: { (changed) in
+                                
+                            }) {
+                                DataIO().saveData(firstStop: self.firstStop, secondStop: self.secondStop)
+                                self.isEditing = false
+                            }.padding(.vertical, 20).textFieldStyle(RoundedBorderTextFieldStyle()).font(.headline)
+                            
+                        } else {
+                            Text(self.secondStop).font(.headline).foregroundColor(Color.black).padding(.top, 10)
+                        }
                         Spacer()
                     }
                     HStack {
@@ -153,6 +178,13 @@ struct TicketListView: View {
                     CaptureImageView(isShown: $showCaptureImageView, picked: $picked, inventory: $inventory)
                 }
             }.navigationBarTitle("TicMaster", displayMode: .inline)
+                .navigationBarItems(trailing:
+                    Button(action: {
+                        self.isEditing = true
+                    }){
+                        Text("Edit")
+                    }
+            )
                 .onAppear{self.loadData()}
             
         }
@@ -160,6 +192,7 @@ struct TicketListView: View {
     
     private func loadData() {
         inventory = DataIO().loadData()
+        (firstStop, secondStop) = DataIO().loadData()
     }
     
     private func touchAction(_ btn: Item) {
@@ -242,5 +275,6 @@ extension UINavigationController: UIGestureRecognizerDelegate {
         return viewControllers.count > 1
     }
 }
+
 
 

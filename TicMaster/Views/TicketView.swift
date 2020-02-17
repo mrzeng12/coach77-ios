@@ -22,7 +22,7 @@ struct TicketView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(){
-                Text("Livingston").font(.title).foregroundColor(Color.black)
+                Text( getTitle() ).font(.title).foregroundColor(Color.black)
                 Spacer()
                 Button(action: {
                     self.history.toggle()
@@ -104,6 +104,14 @@ struct TicketView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }
                 print("end: "+value.translation.width.description) }
+    }
+    
+    func getTitle() -> String {
+        if name == .A || name == .B {
+            return DataIO().loadData().0
+        } else {
+            return DataIO().loadData().1
+        }
     }
     
     func getDateTime() -> String {
