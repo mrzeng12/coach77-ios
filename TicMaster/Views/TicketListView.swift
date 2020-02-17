@@ -42,23 +42,33 @@ struct TicketListView: View {
                         }
                         Spacer()
                     }
-                    HStack {
+                    HStack(alignment: .top) {
                         NavigationLink(destination: TicketView(name: picked, tickets: inventory), tag: 1, selection: $action) {
                             EmptyView()
                         }
-                        Image(getImage(num: inventory[.A]!.count))
-                            .renderingMode(.original)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .overlay(
-                                Text((inventory[.A]!.count != -1) ? String(inventory[.A]!.count) : "")
-                                    .foregroundColor(inventory[.A]!.count>2 ? Color.white: Color.red)
-                                    .font(.body)
-                                    .padding(.bottom, 35)
-                                ,alignment: .bottom)
-                            .onTapGesture {
-                                self.picked = .A
-                                self.touchAction(.A)
+                        VStack(){
+                            Image(getImage(num: inventory[.A]!.count))
+                                .renderingMode(.original)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .overlay(
+                                    Text((inventory[.A]!.count != -1) ? String(inventory[.A]!.count) : "")
+                                        .foregroundColor(inventory[.A]!.count>2 ? Color.white: Color.red)
+                                        .font(.body)
+                                        .padding(.bottom, 35)
+                                    ,alignment: .bottom)
+                                .onTapGesture {
+                                    self.picked = .A
+                                    self.touchAction(.A)
+                            }
+                            if isEditing && inventory[.A]!.count != -1 {
+                                Button(action: {
+                                    self.picked = .A
+                                    self.showingAlert = true
+                                }){
+                                    Text("delete").foregroundColor(.red)
+                                }
+                            }
                         }
                             
                         .onLongPressGesture {
@@ -76,23 +86,33 @@ struct TicketListView: View {
                                 .hidden()
                             
                         }else {
-                            Image(getImage(num: inventory[.B]!.count))
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .overlay(
-                                    Text((inventory[.B]!.count != -1) ? String(inventory[.B]!.count) : "")
-                                        .foregroundColor(inventory[.B]!.count>2 ? Color.white: Color.red)
-                                        .font(.body)
-                                        .padding(.bottom, 35)
-                                    ,alignment: .bottom)
-                                .onTapGesture {
+                            VStack(){
+                                Image(getImage(num: inventory[.B]!.count))
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .overlay(
+                                        Text((inventory[.B]!.count != -1) ? String(inventory[.B]!.count) : "")
+                                            .foregroundColor(inventory[.B]!.count>2 ? Color.white: Color.red)
+                                            .font(.body)
+                                            .padding(.bottom, 35)
+                                        ,alignment: .bottom)
+                                    .onTapGesture {
+                                        self.picked = .B
+                                        self.touchAction(.B)
+                                }
+                                .onLongPressGesture {
                                     self.picked = .B
-                                    self.touchAction(.B)
-                            }
-                            .onLongPressGesture {
-                                self.picked = .B
-                                self.showingAlert = true
+                                    self.showingAlert = true
+                                }
+                                if isEditing && inventory[.B]!.count != -1 {
+                                    Button(action: {
+                                        self.picked = .B
+                                        self.showingAlert = true
+                                    }){
+                                        Text("delete").foregroundColor(.red)
+                                    }
+                                }
                             }
                         }
                         
@@ -112,25 +132,35 @@ struct TicketListView: View {
                         }
                         Spacer()
                     }
-                    HStack {
+                    HStack(alignment: .top) {
                         
-                        Image(getImage(num: inventory[.C]!.count))
-                            .renderingMode(.original)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .overlay(
-                                Text((inventory[.C]!.count != -1) ? String(inventory[.C]!.count) : "")
-                                    .foregroundColor(inventory[.C]!.count>2 ? Color.white: Color.red)
-                                    .font(.body)
-                                    .padding(.bottom, 35)
-                                ,alignment: .bottom)
-                            .onTapGesture {
+                        VStack(){
+                            Image(getImage(num: inventory[.C]!.count))
+                                .renderingMode(.original)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .overlay(
+                                    Text((inventory[.C]!.count != -1) ? String(inventory[.C]!.count) : "")
+                                        .foregroundColor(inventory[.C]!.count>2 ? Color.white: Color.red)
+                                        .font(.body)
+                                        .padding(.bottom, 35)
+                                    ,alignment: .bottom)
+                                .onTapGesture {
+                                    self.picked = .C
+                                    self.touchAction(.C)
+                            }
+                            .onLongPressGesture {
                                 self.picked = .C
-                                self.touchAction(.C)
-                        }
-                        .onLongPressGesture {
-                            self.picked = .C
-                            self.showingAlert = true
+                                self.showingAlert = true
+                            }
+                            if isEditing && inventory[.C]!.count != -1 {
+                                Button(action: {
+                                    self.picked = .C
+                                    self.showingAlert = true
+                                }){
+                                    Text("delete").foregroundColor(.red)
+                                }
+                            }
                         }
                         
                         
@@ -143,25 +173,35 @@ struct TicketListView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .hidden()
                         }else {
-                            Image(getImage(num: inventory[.D]!.count))
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .overlay(
-                                    
-                                    Text((inventory[.D]!.count != -1) ? String(inventory[.D]!.count) : "")
-                                        .foregroundColor(inventory[.D]!.count>2 ? Color.white: Color.red)
-                                        .font(.body)
-                                        .padding(.bottom, 35)
-                                    
-                                    ,alignment: .bottom)
-                                .onTapGesture {
+                            VStack(){
+                                Image(getImage(num: inventory[.D]!.count))
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .overlay(
+                                        
+                                        Text((inventory[.D]!.count != -1) ? String(inventory[.D]!.count) : "")
+                                            .foregroundColor(inventory[.D]!.count>2 ? Color.white: Color.red)
+                                            .font(.body)
+                                            .padding(.bottom, 35)
+                                        
+                                        ,alignment: .bottom)
+                                    .onTapGesture {
+                                        self.picked = .D
+                                        self.touchAction(.D)
+                                }
+                                .onLongPressGesture {
                                     self.picked = .D
-                                    self.touchAction(.D)
-                            }
-                            .onLongPressGesture {
-                                self.picked = .D
-                                self.showingAlert = true
+                                    self.showingAlert = true
+                                }
+                                if isEditing && inventory[.D]!.count != -1 {
+                                    Button(action: {
+                                        self.picked = .D
+                                        self.showingAlert = true
+                                    }){
+                                        Text("delete").foregroundColor(.red)
+                                    }
+                                }
                             }
                         }
                         
@@ -171,6 +211,21 @@ struct TicketListView: View {
                     Spacer()
                         .alert(isPresented: $showingAlert) {
                             Alert(title: Text("Delete Ticket"), message: Text("Do you want to delete this ticket"), primaryButton: .default(Text("Delete"), action: {self.deleteTicket()}), secondaryButton: .default(Text("Cancel")))
+                    }
+                    if isEditing {
+                        Button(action: {
+                            DataIO().saveData(firstStop: self.firstStop, secondStop: self.secondStop)
+                            self.isEditing = false
+                        }) {
+                            HStack {
+                                Text("Finish").fontWeight(.semibold)
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color.init(hex: "4ABC96"))
+                            .cornerRadius(8)
+                        }
                     }
                 }.padding()
                 
@@ -182,8 +237,8 @@ struct TicketListView: View {
                     Button(action: {
                         self.isEditing = true
                     }){
-                        Text("Edit")
-                    }
+                        Image("edit-icon").resizable().aspectRatio(contentMode: .fit).frame(width: 25, height: 25)
+                    }.buttonStyle(PlainButtonStyle())
             )
                 .onAppear{self.loadData()}
             
@@ -196,6 +251,10 @@ struct TicketListView: View {
     }
     
     private func touchAction(_ btn: Item) {
+        
+        if self.isEditing {
+            return
+        }
         
         let detail:TicketDetail = inventory[btn]!
         
