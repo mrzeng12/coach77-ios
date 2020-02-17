@@ -10,8 +10,8 @@ import SwiftUI
 
 struct DataIO {
     func saveData(inventory: [Item:TicketDetail]){
-        print("save data")
-        print(inventory)
+//        print("save data")
+//        print(inventory)
         do {
             let jsonEncoder = JSONEncoder()
             let jsonData = try jsonEncoder.encode(inventory)
@@ -25,7 +25,7 @@ struct DataIO {
         }
     }
     func loadData() -> [Item:TicketDetail] {
-        print("load data")
+//        print("load data")
         do {
             let defaults = UserDefaults.standard
             let json = defaults.object(forKey: "inventory") as? String
@@ -36,7 +36,7 @@ struct DataIO {
             let jsonDecoder = JSONDecoder()
             let jsonData = json!.data(using: .utf8)!
             let res = try jsonDecoder.decode([Item:TicketDetail].self, from: jsonData)
-            print(res)
+//            print(res)
             return res
         } catch  let error as NSError {
             print("Error: \(error)")

@@ -49,13 +49,21 @@ struct TicketView: View {
                 .background(Color.init(hex: tickets[name]!.count > 0 ?"4ABC96":"DDDDDD"))
                 .cornerRadius(8)
             }.padding(.horizontal, 20).padding(.bottom, 20)
-        }.onAppear(perform: {
+        }
+        .onAppear(perform: {
+            print("ticket appear")
             self.brightness = UIScreen.main.brightness
             UIScreen.main.brightness = CGFloat(1.0)
         })
+            
             .onDisappear(perform: {
+                print("ticket disappear")
                 UIScreen.main.brightness = self.brightness
             })
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                print("Moving to background!")
+                UIScreen.main.brightness = self.brightness
+        }
         
     }
     
