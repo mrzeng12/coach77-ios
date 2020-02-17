@@ -10,8 +10,11 @@ import SwiftUI
 
 struct TicketView: View {
     let name: Item
-    @State var brightness: CGFloat
     @State var tickets: [Item:TicketDetail]
+    
+    @State var brightness: CGFloat = UIScreen.main.brightness
+    @State var justUse: Bool = false
+    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -37,16 +40,18 @@ struct TicketView: View {
                 .aspectRatio(contentMode: .fit)
             
             Spacer()
+            
+//            Text("Last use: "+getDateTime()).font(.footnote).padding(.horizontal, 20).padding(.bottom, 10)
             Button(action: {
                 self.useBtnTapped()
             }) {
                 HStack {
-                    Text("USE").fontWeight(.semibold)
+                    Text(self.justUse ? "Just used ...":"USE").fontWeight(.semibold)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
                 .foregroundColor(.white)
-                .background(Color.init(hex: tickets[name]!.count > 0 ?"4ABC96":"DDDDDD"))
+                .background(Color.init(hex: self.justUse ? "DDDDDD": tickets[name]!.count > 0 ?"4ABC96":"DDDDDD"))
                 .cornerRadius(8)
             }.padding(.horizontal, 20).padding(.bottom, 20)
         }
@@ -65,6 +70,12 @@ struct TicketView: View {
                 UIScreen.main.brightness = self.brightness
         }
         
+    }
+    
+    func getDateTime() -> String {
+        
+        return DateFormatter.localizedString(from: Date(), dateStyle: .full, timeStyle: .short)
+
     }
     
     func getImageName() ->String{
@@ -90,17 +101,23 @@ struct TicketView: View {
     }
     
     func useBtnTapped() {
-        if tickets[name]!.count > 0 {
+        
+        if tickets[name]!.count > 0 && !self.justUse {
             tickets[name]!.count -= 1
             DataIO().saveData(inventory: self.tickets)
+            self.justUse = true
+            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
+                self.justUse = false
+            }
         }
+        
     }
     
 }
 
 struct TicketView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketView(name: Item.A, brightness: 1.0, tickets: [.A:TicketDetail()])
+        TicketView(name: Item.A, tickets: [.A:TicketDetail()])
     }
 }
 

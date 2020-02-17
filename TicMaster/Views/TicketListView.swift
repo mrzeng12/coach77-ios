@@ -28,7 +28,7 @@ struct TicketListView: View {
                         Spacer()
                     }
                     HStack {
-                        NavigationLink(destination: TicketView(name: picked, brightness: 1.0, tickets: inventory), tag: 1, selection: $action) {
+                        NavigationLink(destination: TicketView(name: picked, tickets: inventory), tag: 1, selection: $action) {
                             EmptyView()
                         }
                         Image(getImage(num: inventory[.A]!.count))
