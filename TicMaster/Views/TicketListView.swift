@@ -196,17 +196,20 @@ struct TicketListView: View {
     private func transfer(to:Item, from:Item){
         inventory[to]!.image = inventory[from]!.image
         inventory[to]!.count = inventory[from]!.count
+        inventory[to]!.usage = inventory[from]!.usage
     }
     
     private func delete(item:Item){
         FileManager.default.removeExistingImage(fileName: inventory[item]!.image)
         inventory[item]!.count = -1
         inventory[item]!.image = ""
+        inventory[item]!.usage = []
     }
     
     private func reset(item:Item){
         inventory[item]!.count = -1
         inventory[item]!.image = ""
+        inventory[item]!.usage = []
     }
     
     

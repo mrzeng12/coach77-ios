@@ -14,12 +14,31 @@ struct TicketView: View {
     
     @State var brightness: CGFloat = UIScreen.main.brightness
     @State var justUse: Bool = false
-    
+    @State var history: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Livingston").font(.title).foregroundColor(Color.black)
-                .padding(.vertical, 10).padding(.horizontal, 20).padding(.top, 20)
+            HStack(){
+                Text("Livingston").font(.title).foregroundColor(Color.black)
+                Spacer()
+                Button(action: {
+                    self.history.toggle()
+                }){
+                    Text("History").font(.headline)
+                }.sheet(isPresented: $history) {
+                    if self.tickets[self.name]!.usage.count == 0 {
+                        Text("No history")
+                    }
+                    
+                    ForEach(self.tickets[self.name]!.usage.reversed(), id: \.self){
+                        result in
+                        result.contains("Unused") ? Text(result).strikethrough().padding(.bottom, 5) : Text(result).padding(.bottom, 5)
+                    }
+                    
+                    
+                }
+            }.padding(.vertical, 10).padding(.horizontal, 20).padding(.top, 20)
+            
             HStack(){
                 Text(self.getTicketCount()).font(.headline).bold()
                     .foregroundColor(tickets[name]!.count > 2 ? Color.black: Color.red)
@@ -29,7 +48,7 @@ struct TicketView: View {
                     Button(action: {
                         self.unuseBtnTapped()
                     }) {
-                        Text("UNUSE").font(.subheadline).padding(.top, 10).padding(.horizontal, 20)
+                        Text("Unuse").font(.subheadline).padding(.top, 10).padding(.horizontal, 20)
                     }
                 }
             }
@@ -41,7 +60,6 @@ struct TicketView: View {
             
             Spacer()
             
-//            Text("Last use: "+getDateTime()).font(.footnote).padding(.horizontal, 20).padding(.bottom, 10)
             Button(action: {
                 self.useBtnTapped()
             }) {
@@ -75,7 +93,7 @@ struct TicketView: View {
     func getDateTime() -> String {
         
         return DateFormatter.localizedString(from: Date(), dateStyle: .full, timeStyle: .short)
-
+        
     }
     
     func getImageName() ->String{
@@ -96,6 +114,13 @@ struct TicketView: View {
     func unuseBtnTapped() {
         if tickets[name]!.count < 10 {
             tickets[name]!.count += 1
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm E, d MMM y"
+            
+            let date = formatter.string(from: Date())
+            tickets[name]!.usage.append(date+" , Unused")
+            
             DataIO().saveData(inventory: self.tickets)
         }
     }
@@ -104,7 +129,16 @@ struct TicketView: View {
         
         if tickets[name]!.count > 0 && !self.justUse {
             tickets[name]!.count -= 1
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm E, d MMM y"
+            
+            let date = formatter.string(from: Date())
+            
+            tickets[name]!.usage.append(date+" , Used")
+            
             DataIO().saveData(inventory: self.tickets)
+            
             self.justUse = true
             Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
                 self.justUse = false

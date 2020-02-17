@@ -11,4 +11,5 @@ import Foundation
 struct TicketDetail: Codable {
     var count: Int = -1
     var image: String = ""
+    var usage: [String] = []
 }
