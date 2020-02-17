@@ -16,6 +16,9 @@ struct TicketView: View {
     @State var justUse: Bool = false
     @State var history: Bool = false
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(){
@@ -90,8 +93,17 @@ struct TicketView: View {
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                 print("Moving to background!")
                 UIScreen.main.brightness = self.brightness
-        }
+        }.gesture(drag)
         
+    }
+    
+    var drag: some Gesture {
+        DragGesture()
+            .onEnded { value in
+                if value.translation.width > 150.0 {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+                print("end: "+value.translation.width.description) }
     }
     
     func getDateTime() -> String {
