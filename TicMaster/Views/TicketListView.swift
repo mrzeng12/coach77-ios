@@ -232,7 +232,9 @@ struct TicketListView: View {
                 if (showCaptureImageView) {
                     CaptureImageView(isShown: $showCaptureImageView, picked: $picked, inventory: $inventory)
                 }
-            }.navigationBarTitle("TicMaster", displayMode: .inline)
+            }
+            .navigationBarHidden(self.showCaptureImageView)
+            .navigationBarTitle("TicMaster", displayMode: .inline)
                 .navigationBarItems(trailing:
                     Button(action: {
                         self.isEditing = true
