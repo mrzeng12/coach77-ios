@@ -32,7 +32,11 @@ struct TicketView: View {
                     
                     ForEach(self.tickets[self.name]!.usage.reversed(), id: \.self){
                         result in
-                        result.contains("Unused") ? Text(result).strikethrough().padding(.bottom, 5) : Text(result).padding(.bottom, 5)
+                        HStack(){
+                            result.contains("Unused") ? Text(result).strikethrough().padding(.bottom, 5) : Text(result).padding(.bottom, 5)
+                            Spacer()
+                        }.padding(.horizontal, 20)
+                        
                     }
                     
                     
@@ -116,7 +120,7 @@ struct TicketView: View {
             tickets[name]!.count += 1
             
             let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm E, d MMM y"
+            formatter.dateFormat = "HH:mm:ss E, d MMM y"
             
             let date = formatter.string(from: Date())
             tickets[name]!.usage.append(date+" , Unused")
@@ -131,7 +135,7 @@ struct TicketView: View {
             tickets[name]!.count -= 1
             
             let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm E, d MMM y"
+            formatter.dateFormat = "HH:mm:ss E, d MMM y"
             
             let date = formatter.string(from: Date())
             
