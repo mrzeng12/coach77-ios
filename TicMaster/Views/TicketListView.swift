@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Photos
 
 struct TicketListView: View {
     
@@ -21,6 +22,7 @@ struct TicketListView: View {
     @State var isEditing = false
     @State var firstStop = ""
     @State var secondStop = ""
+    @State var showPermission = false
     
     var body: some View {
         NavigationView{
@@ -227,6 +229,11 @@ struct TicketListView: View {
                             .cornerRadius(8)
                         }
                     }
+                    
+                    if showPermission {
+                        Text("To use a ticket from photo library, please go to Settings -> Privacy -> Photos -> TicMaster to allow access")
+                    }
+                    
                 }.padding()
                 
                 if (showCaptureImageView) {
@@ -264,9 +271,24 @@ struct TicketListView: View {
         if(detail.count >= 0){
             self.action = 1
         } else {
-            self.showCaptureImageView.toggle()
+            self.authorizeAndShowAlbum()
         }
         
+    }
+    
+    private func authorizeAndShowAlbum(){
+        let photos = PHPhotoLibrary.authorizationStatus()
+        if photos == .notDetermined {
+            PHPhotoLibrary.requestAuthorization({status in
+                if status == .authorized{
+                    self.showCaptureImageView.toggle()
+                }
+            })
+        } else if photos == .authorized {
+            self.showCaptureImageView.toggle()
+        } else {
+            self.showPermission = true
+        }
     }
     
     private func deleteTicket() {
