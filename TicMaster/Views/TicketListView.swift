@@ -24,8 +24,11 @@ struct TicketListView: View {
     @State var secondStop = ""
     @State var showPermission = false
     
+    @State var isPreview = false
+    
     var body: some View {
         NavigationView{
+            
             ZStack{
                 Color.white
                 
@@ -255,7 +258,9 @@ struct TicketListView: View {
     }
     
     private func loadData() {
-        inventory = DataIO().loadData()
+        if(!self.isPreview){
+            inventory = DataIO().loadData()
+        }
         (firstStop, secondStop) = DataIO().loadData()
     }
     
@@ -343,7 +348,7 @@ struct TicketListView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketListView(picked: .A)
+        TicketListView(inventory:[.A:TicketDetail(count: 8),.B:TicketDetail(count: 8),.C:TicketDetail(count: 8),.D:TicketDetail(count: 8)], picked: .A, isPreview: true)
     }
 }
 
