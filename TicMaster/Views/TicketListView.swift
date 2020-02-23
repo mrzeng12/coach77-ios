@@ -51,35 +51,8 @@ struct TicketListView: View {
                         NavigationLink(destination: TicketView(name: picked, tickets: inventory), tag: 1, selection: $action) {
                             EmptyView()
                         }
-                        VStack(){
-                            Image(getImage(num: inventory[.A]!.count))
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .overlay(
-                                    Text((inventory[.A]!.count != -1) ? String(inventory[.A]!.count) : "")
-                                        .foregroundColor(inventory[.A]!.count>2 ? Color.white: Color.red)
-                                        .font(.body)
-                                        .padding(.bottom, 35)
-                                    ,alignment: .bottom)
-                                .onTapGesture {
-                                    self.picked = .A
-                                    self.touchAction(.A)
-                            }
-                            if isEditing && inventory[.A]!.count != -1 {
-                                Button(action: {
-                                    self.picked = .A
-                                    self.showingAlert = true
-                                }){
-                                    Text("delete").foregroundColor(.red)
-                                }
-                            }
-                        }
-                            
-                        .onLongPressGesture {
-                            self.picked = .A
-                            self.showingAlert = true
-                        }
+                        TicketIconView(inventory: $inventory, ticketNumber: Binding.constant(.A), isEditing: $isEditing, showingAlert: $showingAlert, picked: $picked, action: $action, showPermission: $showPermission, showCaptureImageView: $showCaptureImageView)
+                        
                         
                         Spacer()
                         
@@ -91,34 +64,7 @@ struct TicketListView: View {
                                 .hidden()
                             
                         }else {
-                            VStack(){
-                                Image(getImage(num: inventory[.B]!.count))
-                                    .renderingMode(.original)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .overlay(
-                                        Text((inventory[.B]!.count != -1) ? String(inventory[.B]!.count) : "")
-                                            .foregroundColor(inventory[.B]!.count>2 ? Color.white: Color.red)
-                                            .font(.body)
-                                            .padding(.bottom, 35)
-                                        ,alignment: .bottom)
-                                    .onTapGesture {
-                                        self.picked = .B
-                                        self.touchAction(.B)
-                                }
-                                .onLongPressGesture {
-                                    self.picked = .B
-                                    self.showingAlert = true
-                                }
-                                if isEditing && inventory[.B]!.count != -1 {
-                                    Button(action: {
-                                        self.picked = .B
-                                        self.showingAlert = true
-                                    }){
-                                        Text("delete").foregroundColor(.red)
-                                    }
-                                }
-                            }
+                            TicketIconView(inventory: $inventory, ticketNumber: Binding.constant(.B), isEditing: $isEditing, showingAlert: $showingAlert, picked: $picked, action: $action, showPermission: $showPermission, showCaptureImageView: $showCaptureImageView)
                         }
                         
                         
@@ -139,34 +85,7 @@ struct TicketListView: View {
                     }
                     HStack(alignment: .top) {
                         
-                        VStack(){
-                            Image(getImage(num: inventory[.C]!.count))
-                                .renderingMode(.original)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .overlay(
-                                    Text((inventory[.C]!.count != -1) ? String(inventory[.C]!.count) : "")
-                                        .foregroundColor(inventory[.C]!.count>2 ? Color.white: Color.red)
-                                        .font(.body)
-                                        .padding(.bottom, 35)
-                                    ,alignment: .bottom)
-                                .onTapGesture {
-                                    self.picked = .C
-                                    self.touchAction(.C)
-                            }
-                            .onLongPressGesture {
-                                self.picked = .C
-                                self.showingAlert = true
-                            }
-                            if isEditing && inventory[.C]!.count != -1 {
-                                Button(action: {
-                                    self.picked = .C
-                                    self.showingAlert = true
-                                }){
-                                    Text("delete").foregroundColor(.red)
-                                }
-                            }
-                        }
+                        TicketIconView(inventory: $inventory, ticketNumber: Binding.constant(.C), isEditing: $isEditing, showingAlert: $showingAlert, picked: $picked, action: $action, showPermission: $showPermission, showCaptureImageView: $showCaptureImageView)
                         
                         
                         Spacer()
@@ -178,36 +97,7 @@ struct TicketListView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .hidden()
                         }else {
-                            VStack(){
-                                Image(getImage(num: inventory[.D]!.count))
-                                    .renderingMode(.original)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .overlay(
-                                        
-                                        Text((inventory[.D]!.count != -1) ? String(inventory[.D]!.count) : "")
-                                            .foregroundColor(inventory[.D]!.count>2 ? Color.white: Color.red)
-                                            .font(.body)
-                                            .padding(.bottom, 35)
-                                        
-                                        ,alignment: .bottom)
-                                    .onTapGesture {
-                                        self.picked = .D
-                                        self.touchAction(.D)
-                                }
-                                .onLongPressGesture {
-                                    self.picked = .D
-                                    self.showingAlert = true
-                                }
-                                if isEditing && inventory[.D]!.count != -1 {
-                                    Button(action: {
-                                        self.picked = .D
-                                        self.showingAlert = true
-                                    }){
-                                        Text("delete").foregroundColor(.red)
-                                    }
-                                }
-                            }
+                            TicketIconView(inventory: $inventory, ticketNumber: Binding.constant(.D), isEditing: $isEditing, showingAlert: $showingAlert, picked: $picked, action: $action, showPermission: $showPermission, showCaptureImageView: $showCaptureImageView)
                         }
                         
                         
@@ -264,38 +154,6 @@ struct TicketListView: View {
         (firstStop, secondStop) = DataIO().loadData()
     }
     
-    private func touchAction(_ btn: Item) {
-        
-        if self.isEditing {
-            return
-        }
-        
-        let detail:TicketDetail = inventory[btn]!
-        
-        
-        if(detail.count >= 0){
-            self.action = 1
-        } else {
-            self.authorizeAndShowAlbum()
-        }
-        
-    }
-    
-    private func authorizeAndShowAlbum(){
-        let photos = PHPhotoLibrary.authorizationStatus()
-        if photos == .notDetermined {
-            PHPhotoLibrary.requestAuthorization({status in
-                if status == .authorized{
-                    self.showCaptureImageView.toggle()
-                }
-            })
-        } else if photos == .authorized {
-            self.showCaptureImageView.toggle()
-        } else {
-            self.showPermission = true
-        }
-    }
-    
     private func deleteTicket() {
         
         if picked == .A {
@@ -334,16 +192,6 @@ struct TicketListView: View {
     }
     
     
-    
-    private func getImage(num: Int) -> String {
-        if num == -1 {
-            return "add"
-        } else if num == 0 {
-            return "no-ticket"
-        } else {
-            return "ticket"
-        }
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -60,10 +60,14 @@ struct TicketView: View {
                 }
             }
             Spacer()
-            Image(uiImage: getSavedImage(named: getImageName())! )
-                
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            HStack(){
+                Spacer(minLength: 0)
+                Image(uiImage: getSavedImage(named: getImageName())! )
+                    
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                Spacer(minLength: 0)
+            }
             
             Spacer()
             
